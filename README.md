@@ -29,16 +29,18 @@ This repository provides only SLCP projects (as External Repositories) that are 
 | 6  | Zigbee - Sleepy End-Device and Gateway | [Click Here](./zigbee_sed_rht_sensor) |
 | 7  | Zigbee - Human Detection - MLX90640 | [Click Here](./zigbee_human_detection) |
 | 8  | Zigbee - Philips Hue Smart Light with Home Assistant OS | [Click here](./zigbee_philips_hue_with_home_assistant_os) |
+| 9  | Zigbee - Custom CPCd Command Project with LED Example | [Click here](./custom_cpcd_LED_example) |
+| 10  | Zigbee - Network Traces | [Click Here](./zigbee_network_traces) |
 
 ## Working with Projects ##
 
 1. To add an external repository, perform the following steps.
 
-    - From Simplicity Studio 5, go to **Preferences > Simplicity Studio > External Repos**. Here you can add the repo `https://github.com/SiliconLabs/bluetooth_applications.git`
+    - From Simplicity Studio 5, go to **Preferences > Simplicity Studio > External Repos**. Here you can add the repo `https://github.com/SiliconLabs/zigbee_applications.git`
 
     - Cloning and then selecting the branch, tag, or commit via UI. The default branch is Master. This repo cloned to `<path_to_the_SimplicityStudio_v5>\developer\repos\`
 
-2. From Launcher, select your device from the "Debug Adapters" on the left before creating a project. Then click the **EXAMPLE PROJECTS & DEMOS** tab -> check **bluetooth_applications** under **Provider** to show a list of Bluetooth example projects compatible with the selected device. Click CREATE on a project to generate a new application from the selected template.
+2. From Launcher, select your device from the "Debug Adapters" on the left before creating a project. Then click the **EXAMPLE PROJECTS & DEMOS** tab -> check **zigbee_applications** under **Provider** to show a list of Zigbee example projects compatible with the selected device. Click CREATE on a project to generate a new application from the selected template.
 
 ## Porting to Another Board ##
 
@@ -56,4 +58,4 @@ Questions and comments related to these examples should be made by creating a ne
 
 ## Disclaimer ##
 
-The Gecko SDK suite supports development with Silicon Labs IoT SoC and module devices. Unless otherwise specified in the specific directory, all examples are considered to be EXPERIMENTAL QUALITY which implies that the code provided in the repository has not been formally tested and is provided as-is.  It is not suitable for production environments.  In addition, this code will not be maintained and there may be no bug maintenance planned for these resources. Silicon Labs may update projects from time to time.
+Unless otherwise specified in the specific directory, all examples are considered to be EXPERIMENTAL QUALITY which implies that the code provided in the repository has not been formally tested and is provided as-is. It is not suitable for production environments. In addition, this code will not be maintained and there may be no bug maintenance planned for these resources. Silicon Labs may update projects from time to time.

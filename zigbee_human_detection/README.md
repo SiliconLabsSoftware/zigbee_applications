@@ -1,175 +1,198 @@
-# Zigbee Human Detection #
+# Zigbee - AI/ML Human Detection #
+
+![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
+![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
+![License badge](https://img.shields.io/badge/License-Zlib-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+[![Required board](https://img.shields.io/badge/Sparkfun-MLX90640%20IR%20Array%20(MLX90640%20FIR%20sensor)-green)](https://www.sparkfun.com/products/14844)
+[![Required board](https://img.shields.io/badge/Sparkfun-Micro%20OLED%20Breakout%20(Qwiic)%20board-green)](https://www.sparkfun.com/products/14532)
+![Build badge](https://img.shields.io/badge/Build-passing-green)
+![Flash badge](https://img.shields.io/badge/Flash-280.33%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-30.71%20KB-blue)
 
 ## Overview ##
 
-This project aims to implement human detection using the MLX90640 low-resolution IR camera. The detection integrates into a Zigbee application, emulating an ultrasonic presence sensor (0x0406) in an always-on Zigbee router device. Besides updating the cluster attributes, the device can bind and report whether a human is present. The device also reports whether a human is present on an SSD1306 OLED display.
+This project aims to implement human detection using the MLX90640 low-resolution IR camera. The detection integrates into a Zigbee application, emulating an ultrasonic presence sensor (0x0406) in an always-on Zigbee End Device. Besides updating the cluster attributes, the device can bind and report whether a human is present. The device also reports whether a human is present on an SSD1306 OLED display.
 
 The following picture shows the system view of how it works.
 
-![system](images/system_connection.png)
+![system](image/system_connection.png)
 
-## Gecko SDK version ##
+## SDK version ##
 
-- Gecko SDK Suite 4.4.0
-- [Third Party Hardware Drivers v2.0.0](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
+- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [Third Party Hardware Drivers v4.1.1](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
+- [AI/ML - Alpha - 2.0.0](https://github.com/SiliconLabsSoftware/aiml-extension)
+
+## Software Required ##
+
+- [Simplicity Studio v5 IDE](https://www.silabs.com/developers/simplicity-studio)
 
 ## Hardware Required ##
 
-- Zigbee Coordinator (host + NCP architecture)
+- Zigbee Gateway (host + NCP architecture)
 
-  - NCP: [EFR32xG24 Dev Kit (BRD2601B)](https://www.silabs.com/development-tools/wireless/efr32xg24-dev-kit)
-  - Host: Windows-based (Docker). For details regarding setting up Docker for windows, refer to the app note: [AN1389: Running Zigbee Host Applications in a Docker Container](https://www.silabs.com/documents/public/application-notes/an1389-running-host-applications-in-docker-containers.pdf)
+  - 1x [xG24-DK2601B EFR32xG24 Dev Kit](https://www.silabs.com/development-tools/wireless/efr32xg24-dev-kit?tab=overview) running Zigbee NCP example
+  - 1x Windows-based (Docker) running Zigbee Host Application
+    - For details regarding setting up Docker for windows, refer to the app note:
+    [AN1389: Running Zigbee Host Applications in a Docker Container](https://www.silabs.com/documents/public/application-notes/an1389-running-host-applications-in-docker-containers.pdf)
 
-- Zigbee Router device (SoC architecture)
+- Zigbee End device (SoC architecture)
 
   - [EFR32xG24 Dev Kit (BRD2601B)](https://www.silabs.com/development-tools/wireless/efr32xg24-dev-kit)
-
   - [SparkFun Micro OLED Breakout (Qwiic) board](https://www.sparkfun.com/products/14532)
-
   - [Sparkfun MLX90640 IR Array (MLX90640 FIR sensor)](https://www.sparkfun.com/products/14844)
 
 ## Connections Required ##
 
-Zigbee Coordinator: The EFR32xG24 Dev Kit (NCP) can be connected to the Desktop (Host) via a Micro USB cable.
+- Zigbee Coordinator: The EFR32xG24 Dev Kit (NCP) can be connected to the Desktop (Host) via a Micro USB cable.
 
-![board](images/coordinator_connection.png)
+  ![board](image/coordinator_connection.png)
 
-Zigbee Router device: The SparkFun Micro OLED Breakout (Qwiic) board and the Sparkfun MLX90640 IR Array can be easily connected with the EFR32xG24 Dev Kit by using the Qwiic cable.
+- Zigbee End device: The SparkFun Micro OLED Breakout (Qwiic) board and the Sparkfun MLX90640 IR Array can be easily connected with the EFR32xG24 Dev Kit by using the Qwiic cable.
 
-![board](images/connection.png)
+  ![board](image/connection.png)
 
-**Note:**
+> [!NOTE]
+> *If the Zigbee End Device is implemented on the SparkFun Thing Plus Matter - BRD2704A board* which does not have an internal button (which is used to join or leave the network without CLI commands), you should connect an external button to the board using a ceramic capacitor (ex: Ceramic Capacitor 104) and a resistor to avoid the anti-vibration button used in the project as below.
 
-*If your router device implements on the SparkFun Thing Plus Matter - BRD2704A board*. It does not have an internal button (which is used to join or leave the network without CLI commands). To connect an external button to the board, you should use a ceramic capacitor (ex: Ceramic Capacitor 104) and a resistor to avoid the anti-vibration button used in the project as below.
-
-![button](images/external_button.png)
+![button](image/external_button.png)
 
 ## Setup ##
 
-To test this application, you can either create a project based on an example project or start with a "Zigbee - SoC ZigbeeMinimal" project based on your hardware.
+### Zigbee Gateway ###
 
-### Create a project based on an example project ###
+#### Create a Zigbee NCP ####
 
-- **NCP project**
-    1. From the Launcher Home, add your hardware to MyProducts, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project with filter "NCP ncp-uart-hw".
+1. From the Launcher Home, add your hardware to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project filtering by "ncp uarthw".
 
-    2. Click **Create** button on the **Zigbee - NCP ncp-uart-hw** example. This example project creation dialog pops up -> click Create and Finish and Project should be generated.
+2. Click **Create** button on the **Zigbee - NCP UartHw** example. Example project creation dialog pops up -> click Create and Finish and Project should be generated.
 
-    ![create_ncp](images/create_ncp.png)
+   ![create_ncp](image/create_ncp.png)
 
-    3. Build and flash this example to your board.
+3. Build the project and flash it to your device.
 
-- **Router project**
-    1. From the Launcher Home, add your hardware to MyProducts, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project with the filter "human".
+> [!NOTE]
+> A bootloader needs to be flashed to your device before flashing the 'Zigbee - NCP UartHw' project.
 
-    2. Click **Create** button on the **Zigbee - Human Detection (Router)** example. This example project creation dialog pops up -> click Create and Finish and Project should be generated.
+#### Create a Zigbee Host ####
 
-    ![create_router](images/create_router.png)
+You can either create a project based on an example project or start with a 'Zigbee - Z3Switch' project based on your hardware.
 
-    3. Build and flash this example to your board.
+> [!TIP]
+> This code example has a related app note, which may be worth reading before: [AN1389: Running Zigbee Host Applications in a Docker Container](https://www.silabs.com/documents/public/application-notes/an1389-running-host-applications-in-docker-containers.pdf)
 
-- **Zigbee Gateway Host project**
-    1. From the Launcher Home, add "Linux 32 Bit" to MyProducts, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project with the filter "human".
+##### Create a Zigbee Host based on an example project #####
 
-    2. Click **Create** button on the **Zigbee - Human Detection (Host)** example. This example project creation dialog pops up -> click Create and Finish and Project should be generated.
+1. From the Launcher Home, add "Linux 32 Bit" to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project filtering by **"human"**.
 
-    ![create_coor](images/create_coor.png)
+2. Click **Create** button on the **Zigbee - AI/ML Human Detection (Host)** example. This example project creation dialog pops up -> click Create and Finish and Project should be generated.
+![create_coor](image/create_coor.png)
 
-    3. To build this project, please refer to the app note: [AN1389: Running Zigbee Host Applications in a Docker Container](https://www.silabs.com/documents/public/application-notes/an1389-running-host-applications-in-docker-containers.pdf)
+3. Build and run the Host App in the Container.
 
-### Start with a "Zigbee - SoC ZigbeeMinimal" project ###
+##### Create a Zigbee Host from a 'Zigbee - Z3Switch' #####
 
-*If you want to create the projects from scratch for a different radio board or kit, follow these steps: The relevant source code files for the custom application code of the Host and the Router are located in the [src](src) folder.*
+1. Create a 'Zigbee - Z3Switch' project for the device 'Linux 32 Bit' with **Copy contents** using Simplicity Studio 5.
+2. Copy all attached files in `src/zigbee_human_detection_host` folder into the project root folder (overwriting existing).
+3. Select Z3Gateway.slcp and install the following component for the device:
 
-1. Create the projects
+   - [Zigbee] → [Zigbee 3.0] → [Find and Bind Target]
 
-    - **NCP project**
-      - Create a **Zigbee - NCP ncp-uart-hw** project for the EFR32xG24 Dev Kit (xG24-DK2601B) using Simplicity Studio v5.
+4. Build and run the Host App in the Container.
 
-    - **Router project**
-      - Create a **Zigbee - SoC ZigbeeMinimal** project for the EFR32xG24 Dev Kit (xG24-DK2601B) using Simplicity Studio v5.
+### Zigbee End Device ###
 
-    - **Zigbee Gateway Host project**
-      - On the Simplicity Studio launcher add a product with the name Linux 32 Bit from the My Products on the left side then create a **Zigbee - Host Gateway** project with **Copy contents**.
+You can either create a project based on an example project or start with a "Zigbee - Minimal" project based on your hardware.
 
-2. Configuring the projects
+> [!NOTE]
+> Make sure that Make sure that the [Third Party Hardware Drivers extension](https://github.com/SiliconLabs/third_party_hw_drivers_extension) is installed as part of the SiSDK and the [zigbee_applications](https://github.com/SiliconLabs/zigbee_applications) repository is added to [Preferences > Simplicity Studio > External Repos](https://docs.silabs.com/simplicity-studio-5-users-guide/latest/ss-5-users-guide-about-the-launcher/welcome-and-device-tabs).
 
-   2.1 Host project configuration
+#### Create a Zigbee End Device based on an example project ####
 
-      - Use the default cluster configuration.
-      - Select Z3Gateway.slcp and install the following component for the device:
+1. From the Launcher Home, add your hardware to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project filtering by **"human"**.
 
-        - [Zigbee] → [Zigbee 3.0] → [Find and Bind Target]
+2. Click **Create** button on the **Zigbee - AI/ML Human Detection (End Device)** example. This example project creation dialog pops up -> click Create and Finish and Project should be generated.
 
-   2.2 Router project configuration
+   ![create_end_device](image/create_end_device.png)
 
-      - Load the model file into the project:
+3. Build and flash this example to your board.
 
-        - Create a tflite directory inside the config directory of the project and then copy the [.tflite](config/tflite/ir_human_detection.tflite) model file into it. The project configurator provides a tool that will automatically convert .tflite files into sl_tflite_micro_model source and header files.
+#### Create a Zigbee End Device from a 'Zigbee - Minimal' ####
 
-      - Cluster configuration:
+> [!TIP]
+> *If you want to create the projects from scratch for a different radio board or kit, follow these steps: The relevant source code files for the custom application code of the Host and the End Device are located in the [src](https://github.com/SiliconLabs/zigbee_applications/tree/master/zigbee_human_detection/src) and [inc](https://github.com/SiliconLabs/zigbee_applications/tree/master/zigbee_human_detection/inc) folders.*
 
-        - Make sure endpoint 1 has Device ID is HA Occupancy Sensor (0x0107) and Profile ID is 0x0104.
+1. Create a **Zigbee - Minimal** project for your board using Simplicity Studio 5.
 
-          ![Cluster_configurator](images/cluster_configurator.png)
+2. Copy all attached files in `inc/zigbee_human_detection_end_device` and `src/zigbee_human_detection_end_device` folders into the project root folder (overwriting existing).
 
-      - Save the Cluster configuration.
+3. Load the model file into the project:
 
-      - Open the .slcp file. Select the SOFTWARE COMPONENTS tab and install the software components:
+   - Create a tflite directory inside the config directory of the project and then copy the `config/tflite/ir_human_detection.tflite` model file into it. The project configurator provides a tool that will automatically convert .tflite files into sl_tflite_micro_model source and header files.
 
-        - [Zigbee] → [Utility] → [Zigbee Device Config] → Configure as Router
-        - [Zigbee] → [Cluster Library] → [Common] → [Reporting]
-        - [Zigbee] → [Zigbee 3.0] → [Network Steering]
-        - [Zigbee] → [Zigbee 3.0] → [Find and Bind Initiator]
-        - [Platform] → [Driver] → [Button] → [Simple Button] → [btn0]
-        - [Platform] → [Driver] → [LED] → [Simple LED] → [led0]
-        - [Service] → [IO Stream] → [IO Stream: USART] → [vcom]
+4. Cluster configuration:
 
-        - [Machine Learning] → [Kernels] → [TensorFlow Lite Micro] → Configure this component to use 20000 Tensor Arena size.
+   - Make sure endpoint 1 has Device ID is HA Occupancy Sensor (0x0107) and Profile ID is 0x0104.
 
-          ![tflite_configure](images/tflite_configure.png)
+      ![Cluster_configurator](image/cluster_configurator.png)
 
-        - [Platform] → [Toolchain] → [Memory configuration] → Set this component to use 10240 Stack size and 12288 Heap size.
+   - Save the Cluster configuration.
 
-          ![mem_config](images/mem_config.png)
+5. Open the .slcp file. Select the SOFTWARE COMPONENTS tab and install the software components:
 
-        - [Third Party Hardware Drivers] → [Display & LED] → [SSD1306 - Micro OLED Breakout (Sparkfun) - I2C] → use default configuaration
+   - [Zigbee] → [Utility] → [Zigbee Device Config] → Configure as End Device
+   - [Zigbee] → [Stack] → [Pro Core] → [Pro Leaf Stack]
+   - [Zigbee] → [Stack] → [Pro Core] → [Pro Stack (Common)] → Uninstall
+   - [Zigbee] → [Cluster Library] → [Common] → [Reporting]
+   - [Zigbee] → [Zigbee 3.0] → [Network Steering]
+   - [Zigbee] → [Zigbee 3.0] → [Find and Bind Initiator]
+   - [Zigbee] → [Bootloader] → [Zigbee Application Bootloader] → Uninstall
+   - [Platform] → [Driver] → [Button] → [Simple Button] → [btn0]
+   - [Platform] → [Driver] → [LED] → [Simple LED] → [led0]
+   - [Platform] → [Driver] → [I2C] → [I2CSPM] → Use **qwiic** instance and configure speed mode to fast mode (400kbit/s).
 
-          ![ssd1306_config](images/ssd1306_config.png)
+     ![i2c instance](image/i2c_instance.png)
 
-        - [Third Party Hardware Drivers] → [Service] → [GLIB - OLED Graphics Library]
+   - [Service] → [IO Stream] → [IO Stream: USART] → [vcom]
+   - [AI/ML - Alpha v2.0.0] → [Machine Learning] → [TensorFlow] → [Debug] → [Debug Logging using IO Stream]
+   - [AI/ML - Alpha v2.0.0] → [Machine Learning] → [TensorFlow] → [Kernels] → [Reference Kernels]
+   - [AI/ML - Alpha v2.0.0] → [Machine Learning] → [TensorFlow] → [TensorFlow Lite Micro] → Configure this component to use 20000 Tensor Arena size
 
-        - [Third Party Hardware Drivers] → [Sensors] → [MLX90640 - IR Array Breakout (Sparkfun)]
+     ![tflite_configure](image/tflite_configure.png)
 
-        - Open [Platform] → [Driver] → [I2C] → [I2CSPM] → [qwiic] → Use **qwiic** instance and configure speed mode to fast mode (400kbit/s).
+   - [Services] → [Memory Manager region] → Set this component to use 10240 Stack size
 
-          ![i2c instance](images/i2c_instance.png)
+     ![mem_config](image/mem_config.png)
 
-**NOTE:**
+   - [Third Party Hardware Drivers] → [Display & LED] → [SSD1306 - Micro OLED Breakout (Sparkfun) - I2C] → use default configuaration
 
-- Make sure that the SDK extension already be installed. If not please follow [this documentation](https://github.com/SiliconLabs/third_party_hw_drivers_extension/blob/master/README.md).
-- SDK Extension must be enabled for the project to install [SSD1306 - Micro OLED Breakout (Sparkfun) - I2C], [GLIB - OLED Graphics Library], and [MLX90640 - IR Array Breakout (Sparkfun)] components. Selecting [SSD1306 - Micro OLED Breakout (Sparkfun) - I2C] and [MLX90640 - IR Array Breakout (Sparkfun)] components will also include the "I2CSPM" component with an **qwiic** instance.
-- You need to create the bootloader project and flash it to the device before flashing the application. When flashing the application image to the device, use the .hex or .s37 output file. Flashing the .bin files may overwrite (erase) the bootloader.
+     ![ssd1306_config](image/ssd1306_config.png)
+
+   - [Third Party Hardware Drivers] → [Service] → [GLIB - OLED Graphics Library]
+   - [Third Party Hardware Drivers] → [Sensors] → [MLX90640 - IR Array Breakout (Sparkfun)]
+
+6. Build and flash this project to your board.
 
 ## How It Works ##
 
 ### System Overview Diagram ###
 
-![system overview](images/system_overview.png)
+![system overview](image/system_overview.png)
 
 ### Application Workflows ##
 
 #### Startup and initialization ####
 
-![initialization](images/initialization.png)
+![initialization](image/initialization.png)
 
 #### Application event loop ####
 
-![loop](images/app_loop.png)
+![loop](image/app_loop.png)
 
 #### Zigbee integration & Button UI ####
 
-![zigbee](images/zigbee_ui.png)
+![zigbee](image/zigbee_ui.png)
 
 #### User Configuration ####
 
@@ -205,29 +228,29 @@ First, we form a centralized network on the coordinator, details regarding Z3 ne
 
 After formation, you can use the info command to see the details of the network (EUI64, panID, nodeID, extended panID...) and the NCP endpoint configurations. The following image shows an example of the expected output for both commands:
 
-![create network](images/network_creator.png)
+![create network](image/network_creator.png)
 
 Now we need to open the network for other devices to join, we use the following command:
 
 `plugin network-creator-security open-network`
 
-![open network](images/network_open.png)
+![open network](image/network_open.png)
 
-The network will automatically close after 180 seconds. Now we need to allow our coordinator to act as a "find and bind" target. This way our Router will add a binding entry to its table immediately. We use the following command:
+The network will automatically close after 180 seconds. Now we need to allow our coordinator to act as a "find and bind" target. This way our End Device will add a binding entry to its table immediately. We use the following command:
 
 `plugin find_and_bind target 1`
 
-### Joining the Router and observing reported measurements ###
+### Joining the network and observing reported measurements ###
 
-Lastly, press button 0 in the Router board, this will trigger the network steering process of the device allowing it to join the coordinator's network, identify the coordinator as a "find and bind" target and create a new binding entry in its binding table which as mentioned before is a requirement for the "Reporting" plugin. From this point onwards the Router sends a report to the coordinator for changes in human presence. The coordinators' application will parse the received payload and print the value in the right format, this can be seen in the function `emberAfReportAttributesCallback()`. The following picture shows the expected CLI output log from the host and Router:
+Lastly, press button 0 in the End Device, this will trigger the network steering process of the device allowing it to join the coordinator's network, identify the coordinator as a "find and bind" target and create a new binding entry in its binding table which as mentioned before is a requirement for the "Reporting" plugin. From this point onwards the End Device sends a report to the coordinator for changes in human presence. The coordinators' application will parse the received payload and print the value in the right format, this can be seen in the function `emberAfReportAttributesCallback()`. The following picture shows the expected CLI output log from the Host and the End Device:
 
-![host attr](images/host_attr.png)
+![host attr](image/host_attr.png)
 
-![router report](images/router_report.png)
+![end device report](image/end_device_report.png)
 
 ### Display ###
 
-![display](images/display.png)
+![display](image/display.png)
 
 **Note:** score is the probability score of the detected gesture as a uint8 (i.e. 255 = highest confidence that the correct gesture was detected)
 
@@ -247,7 +270,7 @@ In this project, we have a dataset with two different image types:
 We assign an ID, a.k.a. **label**, 0 and 1, to each of these classes.  
 We then "train" a machine learning model so that when we input an image from one of the classes given to the model, the model's output is the corresponding class ID. In this way, at runtime on the embedded device when the camera captures an image of a human, the ML model predicts its corresponding class ID which the firmware application uses accordingly. i.e.
 
-![model overview](images/model_overview.png)
+![model overview](image/model_overview.png)
 
 ### Dataset Model ###
 
@@ -255,11 +278,11 @@ The most important part of a machine learning model is the dataset that was used
 
 Class: [Human](dataset/human.zip)
 
-![thumbs up](images/dataset_human.png)
+![thumbs up](image/dataset_human.png)
 
 Class: [Nothing](dataset/not_human.zip)
 
-![thumbs up](images/dataset_nothing.png)
+![thumbs up](image/dataset_nothing.png)
 
 ### Model Input ###
 
@@ -313,8 +336,8 @@ Class ROC AUC:
 - human = 99.242%
 ```
 
-![Model Evaluation](images/ir_human_detection-roc.png)
-![Model Evaluation](images/ir_human_detection-precision_vs_recall.png)
-![Model Evaluation](images/ir_human_detection-tpr.png)
-![Model Evaluation](images/ir_human_detection-fpr.png)
-![Model Evaluation](images/ir_human_detection-tfp_fpr.png)
+![Model Evaluation](image/ir_human_detection-roc.png)
+![Model Evaluation](image/ir_human_detection-precision_vs_recall.png)
+![Model Evaluation](image/ir_human_detection-tpr.png)
+![Model Evaluation](image/ir_human_detection-fpr.png)
+![Model Evaluation](image/ir_human_detection-tfp_fpr.png)

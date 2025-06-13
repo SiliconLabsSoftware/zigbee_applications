@@ -22,7 +22,7 @@
   "package": [
     {
       "pathRelativity": "relativeToZap",
-      "path": "..\\..\\..\\..\\SDKs\\gecko_sdk\\app\\zcl\\zcl-zap.json",
+      "path": "..\\..\\..\\..\\SDKs\\simplicity_sdk\\app\\zcl\\zcl-zap.json",
       "type": "zcl-properties",
       "category": "zigbee",
       "version": 1,
@@ -30,7 +30,7 @@
     },
     {
       "pathRelativity": "relativeToZap",
-      "path": "..\\..\\..\\..\\SDKs\\gecko_sdk\\protocol\\zigbee\\app\\framework\\gen-template\\gen-templates.json",
+      "path": "..\\..\\..\\..\\SDKs\\simplicity_sdk\\protocol\\zigbee\\app\\framework\\gen-template\\gen-templates.json",
       "type": "gen-templates-json",
       "category": "zigbee",
       "version": "zigbee-v0"

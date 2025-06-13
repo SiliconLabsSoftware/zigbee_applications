@@ -1,0 +1,95 @@
+project_name: zigbee_network_key_update_co
+label: Zigbee - Network Key Update - Coordinator
+description: >
+  This project aims to implement a network key update application on coordinator side using the Silicon Labs wireless devices integrated with the Zigbee wireless stack.
+
+filter:
+- name: Device Type
+  value: [SoC]
+- name: Project Difficulty
+  value: [Advanced]
+- name: Wireless Technology
+  value: [Zigbee]
+
+package: Zigbee
+quality: experimental
+
+component:
+  - instance: [example]
+    id: cli
+  - id: iostream_recommended_stream
+  - id: power_manager_deepsleep
+  - instance: [led0]
+    id: simple_led
+  - id: zigbee_counters
+  - id: zigbee_debug_print
+  - id: zigbee_network_creator
+  - id: zigbee_pro_stack
+  - id: zigbee_scan_dispatch
+  - id: zigbee_security_link_keys
+  - id: zigbee_source_route
+  - id: zigbee_trust_center_nwk_key_update_broadcast
+  - id: zigbee_zcl_framework_core
+  - id: zigbee_network_steering
+
+readme:
+- path: ../README.md
+
+source:
+  - path: ../src/main.c
+  - path: ../src/coordinator/app.c
+  - path: ../src/coordinator/network_creation.c
+  - path: ../src/coordinator/nwk_key_update.c
+
+include:
+  - path: ../inc/coordinator
+    file_list:
+      - path: network_creation.h
+      - path: nwk_key_update.h
+
+config_file:
+  - path: "../config/zcl/zcl_config.zap"
+    directory: "zcl"
+
+other_file:
+  - path: ../image/SEDKeysPrintAfterUpdate.png
+    directory: "image"
+  - path: ../image/TCKeysPrintAfterUpdate.png
+    directory: "image"
+  - path: ../image/TCKeysPrintBeforeUpdate.png
+    directory: "image"
+  - path: ../image/data.png
+    directory: "image"
+  - path: ../image/form_network.png
+    directory: "image"
+  - path: ../image/start_capture.png
+    directory: "image"
+  - path: ../image/create_prj.png
+    directory: "image"
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: '1'
+  - name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+    value: 'usartHwFlowControlCtsAndRts'
+  - name: SL_CLI_MAX_INPUT_ARGUMENTS
+    value: '16'
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+    value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_COORDINATOR_OR_ROUTER
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
+    value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
+  - name: EMBER_BINDING_TABLE_SIZE
+    value: '10'
+  - condition: [device_series_1]
+    name: NVM3_DEFAULT_NVM_SIZE
+    value: '36864'
+  - condition: [device_series_2]
+    name: NVM3_DEFAULT_NVM_SIZE
+    value: '32768'
+
+ui_hints:
+  highlight:
+    - path: config/zcl/zcl_config.zap
+    - path: README.md
+      focus: true
+  

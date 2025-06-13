@@ -1,0 +1,71 @@
+project_name: multicast_switch_light_ro
+label: Zigbee - Multicast Switch Light - Router
+package: Zigbee
+category: Example|Zigbee
+quality: experimental
+description: |
+  The following article will demonstrate how to create a multicast command to send to a specific groupId. It is sending ON/Off command to lights present in the network. It also provides files to create Network (for Coordinator), joining, and create groups.
+
+component:
+  - id: sl_system
+  - id: board_control
+  - id: iostream_usart
+    instance: [vcom]
+  - id: cli
+    instance: [example]
+  - id: simple_button
+    instance: [btn1]
+  - id: simple_led
+    instance: [led0]
+  - id: iostream_recommended_stream
+  - id: zigbee_basic
+  - id: zigbee_core_cli
+  - id: zigbee_counters
+  - id: zigbee_debug_print
+  - id: zigbee_find_and_bind_target
+  - id: zigbee_groups_server
+  - id: zigbee_identify_feedback
+  - id: zigbee_network_steering
+  - id: zigbee_on_off
+  - id: zigbee_pro_stack
+  - id: zigbee_scan_dispatch
+  - id: zigbee_source_route
+  - id: zigbee_update_tc_link_key
+  - id: zigbee_zcl_framework_core
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: '1'
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+    value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
+  - name: SL_CLI_PROMPT_STRING
+    value: "\"zigbee_RO>\""
+
+source:
+  - path: ../src/main.c
+  - path: ../src/app.c
+  - path: ../src/network_join.c
+  - path: ../src/led_ctrl_ro.c
+
+config_file:
+  - path: ../config/zcl/zcl_config.zap
+    file_id: zap_configuration_file_id
+    directory: zcl
+
+include:
+  - path: ../inc
+    file_list:
+    - path: network_join.h
+    - path: led_ctrl_ro.h
+
+readme:
+  - path: ../../README.md
+
+other_file:
+  - path: ../../image/create_project.png
+    directory: image
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

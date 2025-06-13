@@ -3,22 +3,41 @@
  * @brief Commands for executing manufacturing related tests
  *******************************************************************************
  * # License
- * <b>Copyright 2018 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2025 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
- * The licensor of this software is Silicon Laboratories Inc. Your use of this
- * software is governed by the terms of Silicon Labs Master Software License
- * Agreement (MSLA) available at
- * www.silabs.com/about-us/legal/master-software-license-agreement. This
- * software is distributed to you in Source Code format and is governed by the
- * sections of the MSLA applicable to Source Code.
+ * SPDX-License-Identifier: Zlib
  *
+ * The licensor of this software is Silicon Laboratories Inc.
+ *
+ * This software is provided 'as-is', without any express or implied
+ * warranty. In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software. If you use this software
+ *    in a product, an acknowledgment in the product documentation would be
+ *    appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ *    misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ *
+ *******************************************************************************
+ * # Experimental Quality
+ * This code has not been formally tested and is provided as-is. It is not
+ * suitable for production environments. In addition, this code will not be
+ * maintained and there may be no bug maintenance planned for these resources.
+ * Silicon Labs may update projects from time to time.
  ******************************************************************************/
 #include "sl_string.h"
 #include "em_emu.h"
 #include "em_gpio.h"
 #include "rail.h"
-
+#include "sl_token_manufacturing.h"
 #include "app/framework/include/af.h"
 #include "app/framework/util/af-main.h"
 #include "stack/include/mfglib.h"
@@ -56,7 +75,7 @@ extern RAIL_Handle_t emPhyRailHandle;
 void halInternalSleep(SleepModes sleepMode);
 void packetSendHandler(void);
 
-static sl_zigbee_event_t packetSendEvent;
+static sl_zigbee_af_event_t packetSendEvent;
 static bool packetSendEventInited = false;
 
 // The max packet size for 802.15.4 is 128, minus 1 byte for the length, and 2
@@ -86,8 +105,8 @@ void emAfMfglibPERTest(sl_cli_command_arg_t *arguments)
   uint16_t interval = sl_cli_get_argument_uint16(arguments, 1);
   char str[11];
   char sig[15] = "test";
-  EmberStatus status = EMBER_SUCCESS;
-  emberAfCorePrintln("per test started.");
+  sl_status_t status = SL_STATUS_OK;
+  sl_zigbee_core_debug_println("per test started.");
 
   for (int i = 1; i <= numPackets; i++) {
     // HALCommonDelayMS in api guide; give user option to change delay between
@@ -98,13 +117,15 @@ void emAfMfglibPERTest(sl_cli_command_arg_t *arguments)
     // length byte does not include itself, it includes data bytes to send,
     // 2 bytes CRC and a NULL terminator.
     sendBuff[0] = sl_strlen(sig) + 1 + 2;
-    MEMMOVE(sendBuff + 1, sig, sl_strlen(sig) + 1);
+    memmove(sendBuff + 1, sig, sl_strlen(sig) + 1);
     status = mfglibSendPacket(sendBuff, 0);
     sig[4] = '\0';
     packetCounter++;
   }
 
-  emberAfCorePrintln("%p send message, status 0x%X", PLUGIN_NAME, status);
+  sl_zigbee_core_debug_println("%p send message, status 0x%X",
+                               PLUGIN_NAME,
+                               status);
 }
 
 void emAfMfglibReceiveStart(sl_cli_command_arg_t *arguments)
@@ -113,7 +134,8 @@ void emAfMfglibReceiveStart(sl_cli_command_arg_t *arguments)
   uint16_t expected = sl_cli_get_argument_uint16(arguments, 0);
   expectedPackets = expected;
   mfgTotalPacketCounter = 0;
-  emberAfCorePrintln("Receive mode has been started, packets have been cleared.");
+  sl_zigbee_core_debug_println(
+    "Receive mode has been started, packets have been cleared.");
 }
 
 void emAfMfglibReceiveStop(void)
@@ -127,25 +149,25 @@ void emAfMfglibReceiveStop(void)
   }
   // PER print out
   if (PERtest == TRUE) {
-    emberAfCorePrintln("Packet counter %d",
-                       mfgTotalPacketCounter);
-    emberAfCorePrintln("Expected packets %d",
-                       expectedPackets);
-    emberAfCorePrintln("The Packet Error rate is %d.%d percent",
-                       // multiply to get percentage
-                       lostPackets * 100 / expectedPackets,
-                       // multiply to get percentage
-                       (lostPackets * 1000 / expectedPackets) % 10);
+    sl_zigbee_core_debug_println("Packet counter %d",
+                                 mfgTotalPacketCounter);
+    sl_zigbee_core_debug_println("Expected packets %d",
+                                 expectedPackets);
+    sl_zigbee_core_debug_println("The Packet Error rate is %d.%d percent",
+                                 // multiply to get percentage
+                                 lostPackets * 100 / expectedPackets,
+                                 // multiply to get percentage
+                                 (lostPackets * 1000 / expectedPackets) % 10);
     expectedPackets = 0;
   } else {
-    emberAfCorePrintln("Error: PER test has not been started yet");
+    sl_zigbee_core_debug_println("Error: PER test has not been started yet");
   }
 }
 
 void emAfMfglibClearPackets(void)  // clear-packets
 {
   mfgTotalPacketCounter = 0;
-  emberAfCorePrintln("Packets cleared!");
+  sl_zigbee_core_debug_println("Packets cleared!");
 }
 
 void emAfMfglibSetPower(sl_cli_command_arg_t *arguments)  // set-power
@@ -153,34 +175,38 @@ void emAfMfglibSetPower(sl_cli_command_arg_t *arguments)  // set-power
   int32_t powerLevel = sl_cli_get_argument_int32(arguments, 0);
   RAIL_Status_t status = RAIL_SetTxPowerDbm(emPhyRailHandle, powerLevel);
   if (status == RAIL_STATUS_NO_ERROR) {
-    emberAfCorePrintln("The tx power has been set to %d.%d dBm.",
-                       powerLevel / 10, powerLevel % 10);
+    sl_zigbee_core_debug_println("The tx power has been set to %d.%d dBm.",
+                                 powerLevel / 10, powerLevel % 10);
   } else {
-    emberAfCorePrintln("Set power failed, error 0x%X", status);
+    sl_zigbee_core_debug_println("Set power failed, error 0x%X",
+                                 status);
   }
 }
 
 void emAfMfglibGetPower(sl_cli_command_arg_t *arguments)  // get-power
 {
   RAIL_TxPower_t currPower = RAIL_GetTxPowerDbm(emPhyRailHandle);
-  emberAfCorePrintln("The tx power is %d.%d dBm.", currPower / 10,
-                     currPower % 10);
+  sl_zigbee_core_debug_println("The tx power is %d.%d dBm.",
+                               currPower / 10,
+                               currPower % 10);
 }
 
 void emAfMfglibSetCcaThresholdReg(sl_cli_command_arg_t *arguments)  // set-cca
 {
   tempThresh = sl_cli_get_argument_int8(arguments, 0);
   RAIL_SetCcaThreshold(emPhyRailHandle, tempThresh);
-  emberAfCorePrintln("The temporary CCA threshold has been set to %d.",
-                     tempThresh);
+  sl_zigbee_core_debug_println(
+    "The temporary CCA threshold has been set to %d.",
+    tempThresh);
 }
 
 void emAfMfglibGetCcaThresholdReg(void)  // get-cca
 {
   if (tempThresh != 0) {
-    emberAfCorePrintln("The temporary CCA threshold is %d.", tempThresh);
+    sl_zigbee_core_debug_println("The temporary CCA threshold is %d.",
+                                 tempThresh);
   } else {
-    emberAfCorePrintln("Error: The temporary CCA threshold is NULL");
+    sl_zigbee_core_debug_println("Error: The temporary CCA threshold is NULL");
   }
 }
 
@@ -188,14 +214,15 @@ void emAfMfglibGetCtuneValueReg(void)  // get-ctune-reg
 {
   uint16_t val;
   val = halInternalGetCtune();
-  emberAfCorePrintln("The temporary Ctune value is %d.", val);
+  sl_zigbee_core_debug_println("The temporary Ctune value is %d.", val);
 }
 
 void emAfMfglibSetCtuneValueReg(sl_cli_command_arg_t *arguments)  // set-ctune-reg
 {
   uint16_t tune = sl_cli_get_argument_uint16(arguments, 0);
   halInternalSetCtune(tune);
-  emberAfCorePrintln("The temporary Ctune value has been set.");
+  sl_zigbee_core_debug_println(
+    "The temporary Ctune value has been set.");
 }
 
 void emAfMfglibGetCcaThresholdTok(void)  // get-cca-tok
@@ -203,9 +230,11 @@ void emAfMfglibGetCcaThresholdTok(void)  // get-cca-tok
   tokTypeMfgCTune threshold = 0xFFFF;
   halCommonGetMfgToken(&threshold, TOKEN_MFG_CCA_THRESHOLD);
   if (threshold != 0xFFFF) {
-    emberAfCorePrintln("The CCA threshold token is %d.", (int16_t)threshold);
+    sl_zigbee_core_debug_println("The CCA threshold token is %d.",
+                                 (int16_t)threshold);
   } else {
-    emberAfCorePrintln("The CCA Threshold token is NULL and can be set.");
+    sl_zigbee_core_debug_println(
+      "The CCA Threshold token is NULL and can be set.");
   }
 }
 
@@ -215,11 +244,11 @@ void emAfMfglibSetCcaThresholdTok(sl_cli_command_arg_t *arguments)  // set-cca-t
   tokTypeMfgCTune threshold_old = 0xFFFF;
   halCommonGetMfgToken(&threshold_old, TOKEN_MFG_CCA_THRESHOLD);
   if (threshold_old != 0xFFFF) {
-    emberAfCorePrintln(
+    sl_zigbee_core_debug_println(
       "The CCA threshold token had already been set previously and therefore not set again!");
   } else {
     halCommonSetMfgToken(TOKEN_MFG_CCA_THRESHOLD, &threshold_new);
-    emberAfCorePrintln("The CCA threshold token has been set.");
+    sl_zigbee_core_debug_println("The CCA threshold token has been set.");
   }
 }
 
@@ -228,9 +257,9 @@ void emAfMfglibGetCtuneValueTok(void)  // get-ctune-tok
   tokTypeMfgCTune value = 0xFFFF;
   halCommonGetMfgToken(&value, TOKEN_MFG_CTUNE);
   if (value != 0xFFFF) {
-    emberAfCorePrintln("The CTUNE value token is %d.", value);
+    sl_zigbee_core_debug_println("The CTUNE value token is %d.", value);
   } else {
-    emberAfCorePrintln("The CTUNE value token is NULL and can be set.");
+    sl_zigbee_core_debug_println("The CTUNE value token is NULL and can be set.");
   }
 }
 
@@ -240,11 +269,11 @@ void emAfMfglibSetCtuneValueTok(sl_cli_command_arg_t *arguments)  // set-ctune-t
   tokTypeMfgCTune value_old = 0xFFFF;
   halCommonGetToken(&value_old, TOKEN_MFG_CTUNE);
   if (value_old != 0xFFFF) {
-    emberAfCorePrintln(
+    sl_zigbee_core_debug_println(
       "The CTUNE value token had already been set previously and therefore not set again!");
   } else {
     halCommonSetToken(TOKEN_MFG_CTUNE, &value_new);
-    emberAfCorePrintln("The CTUNE value token has been set.");
+    sl_zigbee_core_debug_println("The CTUNE value token has been set.");
   }
 }
 
@@ -252,9 +281,9 @@ void packetSendHandler(void)
 {
   char str[12];
   char sig[15] = "test";
-  EmberStatus status;
+  sl_status_t status;
 
-  sl_zigbee_event_set_inactive(&packetSendEvent);
+  sl_zigbee_af_event_set_inactive(&packetSendEvent);
 
   if (contPacket) {
     packetCounter++;
@@ -263,30 +292,32 @@ void packetSendHandler(void)
     // length byte does not include itself, it includes data bytes to send and 2
     //   bytes CRC
     sendBuff[0] = sl_strlen(sig) + 1 + 2;
-    MEMMOVE(sendBuff + 1, sig, sl_strlen(sig) + 1);
+    memmove(sendBuff + 1, sig, sl_strlen(sig) + 1);
     status = mfglibSendPacket(sendBuff, 0);
-    emberAfCorePrintln("%p send packet, status 0x%X", PLUGIN_NAME, status);
+    sl_zigbee_core_debug_println("%p send packet, status 0x%X",
+                                 PLUGIN_NAME,
+                                 status);
   }
 
   // Reschedule the event after a delay of 1 seconds
-  sl_zigbee_event_set_delay_ms(&packetSendEvent, MY_DELAY_IN_MS);
+  sl_zigbee_af_event_set_delay_ms(&packetSendEvent, MY_DELAY_IN_MS);
 }
 
 // Sends packets continuously, set in milliseconds
 void emAfMfglibContinuousPacket(void)
 {
-  if (!emberAfMfglibRunning()) {
-    emberAfCorePrintln("mfglib test not started!");
+  if (!sl_zigbee_af_mfglib_running()) {
+    sl_zigbee_core_debug_println("mfglib test not started!");
     return;
   } else if (contPacket) {
-    emberAfCorePrintln("Continuous packet test already started!");
+    sl_zigbee_core_debug_println("Continuous packet test already started!");
     return;
   }
   contPacket = TRUE;
-  emberAfCorePrintln("Continuous packet test started!");
+  sl_zigbee_core_debug_println("Continuous packet test started!");
   packetCounter = 0;
   if (!packetSendEventInited) {
-    sl_zigbee_event_init(&packetSendEvent, packetSendHandler);
+    sl_zigbee_af_event_init(&packetSendEvent, packetSendHandler);
     packetSendEventInited = true;
   }
   packetSendHandler();
@@ -296,26 +327,26 @@ void emAfMfglibContinuousPacket(void)
 void emAfMfglibStopContinuous(void)
 {
   if (!contPacket) {
-    emberAfCorePrintln("Continuous test is not in progress.");
+    sl_zigbee_core_debug_println("Continuous test is not in progress.");
     return;
   }
   contPacket = FALSE;
-  emberAfCorePrintln("Continuous packet testing ended :(");
-  emberAfCorePrintln("Packet Counter: %u", packetCounter);
+  sl_zigbee_core_debug_println("Continuous packet testing ended :(");
+  sl_zigbee_core_debug_println("Packet Counter: %u", packetCounter);
   if (packetSendEventInited) {
-    sl_zigbee_event_set_inactive(&packetSendEvent);
+    sl_zigbee_af_event_set_inactive(&packetSendEvent);
   }
 }
 
 void emAfMfglibClearPacketCounter(void)
 {
   packetCounter = 0;
-  emberAfCorePrintln("Packet Counter: %u", packetCounter);
+  sl_zigbee_core_debug_println("Packet Counter: %u", packetCounter);
 }
 
 void emAfMfglibGetPackets(void)
 {
-  emberAfCorePrintln("Packet Counter: %u", packetCounter);
+  sl_zigbee_core_debug_println("Packet Counter: %u", packetCounter);
 }
 
 void emAfMfglibReceiveMode(sl_cli_command_arg_t *arguments)
@@ -324,18 +355,18 @@ void emAfMfglibReceiveMode(sl_cli_command_arg_t *arguments)
   if (mode == 0) {
     MODE1 = FALSE;
     MODE2 = FALSE;
-    emberAfCorePrintln("No output for packets.");
+    sl_zigbee_core_debug_println("No output for packets.");
   } else if (mode == 1) {
     MODE1 = TRUE;
     MODE2 = FALSE;
-    emberAfCorePrintln("Confirmation Println for each packet.");
+    sl_zigbee_core_debug_println("Confirmation Println for each packet.");
   } else if (mode == 2) {
     MODE1 = FALSE;
     MODE2 = TRUE;
-    emberAfCorePrintln(
+    sl_zigbee_core_debug_println(
       "Prints packet number, Link Quality and RSSI for each packet");
   } else {
-    emberAfCorePrintln("That is not a valid mode.");
+    sl_zigbee_core_debug_println("That is not a valid mode.");
   }
 }
 
@@ -375,7 +406,7 @@ void emAfMfglibModeSetGpio(sl_cli_command_arg_t *arguments)
     2);
   uint32_t out = sl_cli_get_argument_uint32(arguments, 3);
   GPIO_PinModeSet(port, pin, mode, out);
-  emberAfCorePrintln("GPIO settings have been applied.");
+  sl_zigbee_core_debug_println("GPIO settings have been applied.");
 }
 
 void emAfMfglibModeGetGpio(sl_cli_command_arg_t *arguments)
@@ -404,7 +435,8 @@ void emAfMfglibModeGetGpio(sl_cli_command_arg_t *arguments)
    */
   uint32_t pin = sl_cli_get_argument_uint32(arguments, 1);
   GPIO_Mode_TypeDef mode = GPIO_PinModeGet(port, pin);
-  emberAfCorePrintln("The specified port is in mode %d.", (uint32_t )mode);
+  sl_zigbee_core_debug_println("The specified port is in mode %d.",
+                               (uint32_t )mode);
 }
 
 void emAfMfglibSetGpio(sl_cli_command_arg_t *arguments)
@@ -436,10 +468,10 @@ void emAfMfglibSetGpio(sl_cli_command_arg_t *arguments)
   uint32_t out = sl_cli_get_argument_uint32(arguments, 2);
   if (out == 0) {
     GPIO_PinOutClear(port, pin);
-    emberAfCorePrintln("GPIO output have been set");
+    sl_zigbee_core_debug_println("GPIO output have been set");
   } else {
     GPIO_PinOutSet(port, pin);
-    emberAfCorePrintln("GPIO output have been cleared");
+    sl_zigbee_core_debug_println("GPIO output have been cleared");
   }
 }
 
@@ -469,21 +501,21 @@ void emAfMfglibGetGpio(sl_cli_command_arg_t *arguments)
    */
   uint32_t pin = sl_cli_get_argument_uint32(arguments, 1);
   uint8_t value = (GPIO_PortInGet(port) & (1 << pin)) ? 1 : 0;
-  emberAfCorePrintln("The specified GPIO input value: %d.", value);
+  sl_zigbee_core_debug_println("The specified GPIO input value: %d.", value);
 }
 
 void emAfMfglibGpioHelp(void)
 {
-  emberAfCorePrintln(
+  sl_zigbee_core_debug_println(
     "Possible ports:\nPort A = 0\nPort B = 1\nPort C = 2\nPort D = 3\nPort E = 4\nPort F = 5\nPort G = 6\nPort H = 7\nPort I = 8\nPort J = 9\nPort K = 10\n");
-  emberAfCorePrintln("AVAILABLE PINS: 0 - 15\n");
-  emberAfCorePrintln(
+  sl_zigbee_core_debug_println("AVAILABLE PINS: 0 - 15\n");
+  sl_zigbee_core_debug_println(
     "PIN MODES:\ngpioModeDisabled = 0\ngpioModeInput = 1\ngpioModeInputPull = 2\n"
     "gpioModeInputPullFilter = 3\ngpioModePushPull = 4\ngpioModePushPullAlternate = 5\ngpioModeWiredOr = 6\n"
     "gpioModeWiredOrPullDown = 7\ngpioModeWiredAnd = 8\ngpioModeWiredAndFilter = 9\ngpioModeWiredAndPullUp = 10\n"
     "gpioModeWiredAndPullUpFilter = 11\ngpioModeWiredAndAlternate = 12\ngpioModeWiredAndAlternateFilter = 13\n"
     "gpioModeWiredAndAlternatePullUp = 14\ngpioModeWiredAndAlternatePullUpFilter = 15\n");
-  emberAfCorePrintln("DOUT PIN: Low = 0, High = 1\n");
+  sl_zigbee_core_debug_println("DOUT PIN: Low = 0, High = 1\n");
 }
 
 void emAfMfglibTokDump(void)
@@ -501,8 +533,8 @@ void emAfMfglibTokDump(void)
     /* Create an exact size array for the local copy of the data. */   \
     uint8_t i, dst[sizeof(type)];                                      \
     /* Tell me the creator code and name of the token. */              \
-    emberAfCorePrint("\n{ [%2X] ", creator);                           \
-    emberAfCorePrint("{%s:", #name);                                   \
+    sl_zigbee_core_debug_print("\n{ [%2X] ", creator);                 \
+    sl_zigbee_core_debug_print("{%s:", #name);                         \
     /* If this is an indexed token, we're going to loop over each */   \
     /* index.  If this is not an indexed token, the array size    */   \
     /* should be 1 so we'll only perform this loop once.          */   \
@@ -515,16 +547,16 @@ void emAfMfglibTokDump(void)
       } else {                                                         \
         /* We're trying to access an indexed token.  The index */      \
         /* parameter is being looped over with the for loop.   */      \
-        emberAfCorePrint("[index %d] ", j);                            \
+        sl_zigbee_core_debug_print("[index %d] ", j);                  \
         halInternalGetTokenData(dst, TOKEN_ ## name, j, sizeof(type)); \
       }                                                                \
       /* Print out the token data we just obtained. */                 \
       for (i = 0; i < sizeof(type); i++) {                             \
-        emberAfCorePrint("%X", dst[i]);                                \
+        sl_zigbee_core_debug_print("%X", dst[i]);                      \
       }                                                                \
-      emberAfCorePrintln("}}\r\n");                                    \
+      sl_zigbee_core_debug_println("}}\r\n");                          \
     }                                                                  \
-    emberAfCorePrintln("}}\r\n");                                      \
+    sl_zigbee_core_debug_println("}}\r\n");                            \
   }
 
   // Now that we've defined the tokens to be a block of code, pull them in
@@ -541,9 +573,9 @@ void emAfMfglibSleepTest(sl_cli_command_arg_t *arguments)
 {
   uint8_t mode = sl_cli_get_argument_uint8(arguments, 0);
   if (mode > 5) {
-    emberAfCorePrintln("Invalid sleep mode.");
+    sl_zigbee_core_debug_println("Invalid sleep mode.");
   } else {
-    emberAfCorePrintln("Entering sleep mode.");
+    sl_zigbee_core_debug_println("Entering sleep mode.");
     halCommonDelayMicroseconds(1000);
     halInternalSleep(mode);
   }

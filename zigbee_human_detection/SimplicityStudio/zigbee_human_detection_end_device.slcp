@@ -1,0 +1,191 @@
+project_name: zigbee_human_detection_end_device
+label: Zigbee - AI/ML Human detection (End Device)
+description: |
+  This project aims to implement human detection using the MLX90640 low resolution IR camera in an always-on Zigbee End Device and reports to zigbee gateway in the zigbee network.
+category: Zigbee Application
+package: Zigbee
+quality: experimental
+
+filter:
+- name: Device Type
+  value: [SoC]
+- name: Project Difficulty
+  value: [Advanced]
+- name: Wireless Technology
+  value: [Zigbee]
+
+readme:
+- path: ../README.md
+
+source:
+- path: ../src/zigbee_human_detection_end_device/main.c
+- path: ../src/zigbee_human_detection_end_device/app.c
+- path: ../src/zigbee_human_detection_end_device/human_detection_ai.cc
+- path: ../src/zigbee_human_detection_end_device/human_detection_ui.c
+- path: ../src/zigbee_human_detection_end_device/image_handler.c
+- path: ../src/zigbee_human_detection_end_device/recognize_commands.cc
+
+include:
+- path: ../inc
+  file_list:
+  - path: ../inc/zigbee_human_detection_end_device/human_detection_ai.h
+  - path: ../inc/zigbee_human_detection_end_device/human_detection_ui.h
+  - path: ../inc/zigbee_human_detection_end_device/image_handler.h
+  - path: ../inc/zigbee_human_detection_end_device/recognize_commands.h
+
+component:
+  - id: zigbee_core_cli
+  - id: zigbee_counters
+  - id: zigbee_debug_print
+  - id: zigbee_find_and_bind_initiator
+  - id: zigbee_network_steering
+  - id: zigbee_pro_leaf_stack
+  - id: zigbee_reporting
+  - id: zigbee_scan_dispatch
+  - id: zigbee_source_route
+  - id: zigbee_update_tc_link_key
+  - id: zigbee_zcl_framework_core
+  - id: simple_led
+    instance: [led0]
+  - id: sparkfun_micro_oled_ssd1306
+    from: third_party_hw_drivers
+  - id: tensorflow_lite_micro
+  - id: sparkfun_ir_array
+    from: third_party_hw_drivers
+  - id: services_oled_glib
+    from: third_party_hw_drivers
+  - id: iostream_usart
+    instance: [vcom]
+  - id: cli
+    instance: [example]
+  - id: simple_button
+    instance: [btn0]
+  - id: i2cspm
+    instance: [qwiic]
+  - id: tensorflow_debug_log_iostream
+    from: aiml
+  - id: tensorflow_lite_micro
+    from: aiml
+  - id: tensorflow_lite_micro_reference_kernels
+    from: aiml
+
+config_file:
+  - path: ../config/zigbee_human_detection_end_device/zcl_config.zap
+    directory: zcl
+
+  - path: ../config/tflite/ir_human_detection.tflite
+    directory: tflite
+
+  - override:
+      component: simple_button
+      instance: btn0
+      file_id: simple_button_config
+      condition: [brd2704a]
+    path: "../config/zigbee_human_detection_end_device/brd2704a/sl_simple_button_btn0_config.h"
+
+configuration:
+- name: SL_BOARD_ENABLE_VCOM
+  value: '1'
+- name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+  value: usartHwFlowControlCtsAndRts
+- name: SL_CLI_MAX_INPUT_ARGUMENTS
+  value: '16'
+- name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_END_DEVICE
+- name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
+  value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
+- name: EMBER_BINDING_TABLE_SIZE
+  value: '10'
+- condition: [device_series_1]
+  name: NVM3_DEFAULT_NVM_SIZE
+  value: '36864'
+- condition: [device_series_2]
+  name: NVM3_DEFAULT_NVM_SIZE
+  value: '32768'
+- name: SL_PSA_ITS_SUPPORT_V1_DRIVER
+  value: '0'
+- name: SL_PSA_ITS_SUPPORT_V2_DRIVER
+  value: '0'
+- name: SL_PSA_ITS_SUPPORT_V3_DRIVER
+  value: '1'
+- name: SL_TFLITE_MICRO_ARENA_SIZE
+  value: '20000'
+- name: SL_STACK_SIZE
+  value: '10240'
+- name: SL_I2CSPM_QWIIC_SPEED_MODE
+  value: '1'
+
+other_file:
+  - path: ../image/app_loop.png
+    directory: image
+  - path: ../image/external_button.png
+    directory: image
+  - path: ../image/cluster_configurator.png
+    directory: image
+  - path: ../image/connection.png
+    directory: image
+  - path: ../image/coordinator_connection.png
+    directory: image
+  - path: ../image/create_coor.png
+    directory: image
+  - path: ../image/create_ncp.png
+    directory: image
+  - path: ../image/create_end_device.png
+    directory: image
+  - path: ../image/dataset_human.png
+    directory: image
+  - path: ../image/dataset_nothing.png
+    directory: image
+  - path: ../image/display.png
+    directory: image
+  - path: ../image/flash_programmer.png
+    directory: image
+  - path: ../image/host_attr.png
+    directory: image
+  - path: ../image/i2c_instance.png
+    directory: image
+  - path: ../image/initialization.png
+    directory: image
+  - path: ../image/ir_human_detection-fpr.png
+    directory: image
+  - path: ../image/ir_human_detection-precision_vs_recall.png
+    directory: image
+  - path: ../image/ir_human_detection-roc.png
+    directory: image
+  - path: ../image/ir_human_detection-tfp_fpr.png
+    directory: image
+  - path: ../image/ir_human_detection-tpr.png
+    directory: image
+  - path: ../image/logs.png
+    directory: image
+  - path: ../image/mem_config.png
+    directory: image
+  - path: ../image/model_overview.png
+    directory: image
+  - path: ../image/network_creator.png
+    directory: image
+  - path: ../image/network_open.png
+    directory: image
+  - path: ../image/end_device_report.png
+    directory: image
+  - path: ../image/ssd1306_config.png
+    directory: image
+  - path: ../image/system_connection.png
+    directory: image
+  - path: ../image/system_overview.png
+    directory: image
+  - path: ../image/tflite_configure.png
+    directory: image
+  - path: ../image/zigbee_ui.png
+    directory: image
+
+sdk_extension:
+- id: third_party_hw_drivers
+  version: 4.1.1
+- id: aiml
+  version: 2.0.0
+
+ui_hints:
+  highlight:
+  - path: README.md
+    focus: true

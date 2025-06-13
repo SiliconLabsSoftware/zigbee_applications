@@ -16,7 +16,7 @@ filter:
 
 package: Zigbee
 
-quality: production
+quality: experimental
 
 readme:
 - path: ../README.md
@@ -47,32 +47,32 @@ config_file:
   directory: zcl
 
 other_file:
-  - path: ../images/connect_ncp.png
-    directory: "images"
-  - path: ../images/create_device.png
-    directory: "images"
-  - path: ../images/create_gateway.png
-    directory: "images"
-  - path: ../images/create_minimal.png
-    directory: "images"
-  - path: ../images/create_ncp.png
-    directory: "images"
-  - path: ../images/form_network.png
-    directory: "images"
-  - path: ../images/hardware.png
-    directory: "images"
-  - path: ../images/join_network.png
-    directory: "images"
-  - path: ../images/make_gateway.png
-    directory: "images"
-  - path: ../images/open_network.png
-    directory: "images"
-  - path: ../images/print_time.png
-    directory: "images"
-  - path: ../images/query_time.png
-    directory: "images"
-  - path: ../images/time_cluster.png
-    directory: "images"
+  - path: ../image/connect_ncp.png
+    directory: "image"
+  - path: ../image/create_device.png
+    directory: "image"
+  - path: ../image/create_gateway.png
+    directory: "image"
+  - path: ../image/create_minimal.png
+    directory: "image"
+  - path: ../image/create_ncp.png
+    directory: "image"
+  - path: ../image/form_network.png
+    directory: "image"
+  - path: ../image/hardware.png
+    directory: "image"
+  - path: ../image/join_network.png
+    directory: "image"
+  - path: ../image/make_gateway.png
+    directory: "image"
+  - path: ../image/open_network.png
+    directory: "image"
+  - path: ../image/print_time.png
+    directory: "image"
+  - path: ../image/query_time.png
+    directory: "image"
+  - path: ../image/time_cluster.png
+    directory: "image"
 
 configuration:
 - name: SL_BOARD_ENABLE_VCOM
@@ -85,11 +85,8 @@ configuration:
   value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
-- name: EMBER_BINDING_TABLE_SIZE
+- name: SL_ZIGBEE_BINDING_TABLE_SIZE
   value: '10'
-- condition: [device_series_1]
-  name: NVM3_DEFAULT_NVM_SIZE
-  value: '36864'
 - condition: [device_series_2]
   name: NVM3_DEFAULT_NVM_SIZE
   value: '32768'
@@ -102,7 +99,5 @@ configuration:
 
 ui_hints:
   highlight:
-  - path: ''
+  - path: README.md
     focus: true
-  - path: ../README.md
-

@@ -1,0 +1,102 @@
+project_name: unique_tc_link_key_co
+label: Zigbee -  Unique TC Link Key - Coordinator
+
+description: This example shows how to use unique Trust Center link keys.
+
+filter:
+- name: Device Type
+  value: [SoC]
+- name: Project Difficulty
+  value: [Advanced]
+- name: Wireless Technology
+  value: [Zigbee]
+
+package: Zigbee
+quality: experimental
+
+component:
+  - id: cli
+    instance: [example]
+  - id: zigbee_application_bootloader
+  - id: zigbee_basic
+  - id: zigbee_counters
+  - id: zigbee_debug_print
+  - id: zigbee_network_creator
+  - id: zigbee_network_steering
+  - id: zigbee_pro_stack
+  - id: zigbee_scan_dispatch 
+  - id: zigbee_security_link_keys
+  - id: zigbee_source_route
+  - id: zigbee_update_tc_link_key
+  - id: zigbee_zcl_framework_core
+
+readme:
+  - path: ../../README.md
+
+source:
+  - path: ../src/app.c
+  - path: ../src/main.c
+
+config_file:
+  - path: ../config/zcl/zcl_config.zap
+    directory: "zcl"
+
+other_file:
+  - path: ../../image/create_example.png
+    directory: "image"
+  - path: ../../image/command_co.png
+    directory: "image"
+  - path: ../../image/command_sed.png
+    directory: "image"
+  - path: ../../image/form_and_open.png
+    directory: "image"
+  - path: ../../image/join.png
+    directory: "image"
+  - path: ../../image/keys_print.png
+    directory: "image"
+
+template_contribution:
+  - name: cli_group
+    priority: 0
+    value:
+      name: custom
+      help: Custom commands
+
+  - name: cli_command
+    priority: 0
+    value:
+      group: custom
+      name: network_form
+      handler: network_form_handler
+      help: Form and Create custom Network
+
+  - name: cli_command
+    priority: 0
+    value:
+      group: custom
+      name: network_open
+      handler: network_open_handler
+      help: Open the network with well-known key
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: "1"
+  - name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+    value: usartHwFlowControlCtsAndRts
+  - name: SL_CLI_MAX_INPUT_ARGUMENTS
+    value: "16"
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+    value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_COORDINATOR_OR_ROUTER
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
+    value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
+  - name: EMBER_BINDING_TABLE_SIZE
+    value: "10"
+  - name: SL_CLI_PROMPT_STRING
+    value: '"co>"'
+  - name: NVM3_DEFAULT_NVM_SIZE
+    value: '32768'
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

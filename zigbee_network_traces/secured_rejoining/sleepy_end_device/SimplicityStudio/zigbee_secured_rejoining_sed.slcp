@@ -1,0 +1,73 @@
+project_name: zigbee_secured_rejoining_sed
+label: Zigbee - Secured Joining - Sleepy End Device
+package: Zigbee
+category: Example|Zigbee
+quality: experimental
+description: |
+  This project shows the Secured Rejoining in the case an End-device is aged out of the child table of its parent.
+
+component:
+  - id: cli
+    instance: [example]
+  - id: clock_manager
+  - id: iostream_recommended_stream
+  - id: zigbee_basic
+  - id: zigbee_core_cli
+  - id: zigbee_counters
+  - id: zigbee_debug_print
+  - id: zigbee_end_device_support
+  - id: zigbee_find_and_bind_initiator
+  - id: zigbee_groups_client
+  - id: zigbee_identify
+  - id: zigbee_interpan
+  - id: zigbee_network_steering
+  - id: zigbee_pro_leaf_stack
+  - id: zigbee_scan_dispatch
+  - id: zigbee_scenes_client
+  - id: zigbee_update_tc_link_key
+  - id: zigbee_zcl_cli
+  - id: zigbee_zcl_framework_core
+  - id: zigbee_zll
+  - id: zigbee_zll_commissioning_client
+  - id: zigbee_zll_commissioning_common
+  - id: zigbee_zll_scenes_client
+  - id: zigbee_zll_utility_client
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: '1'
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+    value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_END_DEVICE
+  - name: SL_CLI_PROMPT_STRING
+    value: "\"zigbee_SED>\""
+
+source:
+  - path: ../src/main.c
+  - path: ../src/app.c
+  - path: ../src/network_join.c
+
+config_file:
+  - path: ../config/zcl/zcl_config.zap
+    file_id: zap_configuration_file_id
+    directory: zcl
+
+include:
+  - path: ../inc
+    file_list:
+    - path: network_join.h
+
+readme:
+  - path: ../../README.md
+
+other_file:
+  - path: ../../image/rejoin_capture.png
+    directory: image
+  - path: ../../image/secured_rejoin_tc.png
+    directory: image
+  - path: ../../image/create_project.png
+    directory: image
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

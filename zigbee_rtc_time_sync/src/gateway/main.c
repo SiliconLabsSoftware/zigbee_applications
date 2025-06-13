@@ -3,19 +3,39 @@
  * @brief main() function.
  *******************************************************************************
  * # License
- * <b>Copyright 2021 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2025 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
- * The licensor of this software is Silicon Laboratories Inc. Your use of this
- * software is governed by the terms of Silicon Labs Master Software License
- * Agreement (MSLA) available at
- * www.silabs.com/about-us/legal/master-software-license-agreement. This
- * software is distributed to you in Source Code format and is governed by the
- * sections of the MSLA applicable to Source Code.
+ * SPDX-License-Identifier: Zlib
  *
+ * The licensor of this software is Silicon Laboratories Inc.
+ *
+ * This software is provided \'as-is\', without any express or implied
+ * warranty. In no event will the authors be held liable for any damages
+ * arising from the use of this software.
+ *
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely, subject to the following restrictions:
+ *
+ * 1. The origin of this software must not be misrepresented; you must not
+ *    claim that you wrote the original software. If you use this software
+ *    in a product, an acknowledgment in the product documentation would be
+ *    appreciated but is not required.
+ * 2. Altered source versions must be plainly marked as such, and must not be
+ *    misrepresented as being the original software.
+ * 3. This notice may not be removed or altered from any source distribution.
+ *
+ *******************************************************************************
+ * # Experimental Quality
+ * This code has not been formally tested and is provided as-is. It is not
+ * suitable for production environments. In addition, this code will not be
+ * maintained and there may be no bug maintenance planned for these resources.
+ * Silicon Labs may update projects from time to time.
  ******************************************************************************/
-
+#ifdef SL_COMPONENT_CATALOG_PRESENT
 #include "sl_component_catalog.h"
+#endif
 #include "sl_system_init.h"
 #if defined(SL_CATALOG_POWER_MANAGER_PRESENT)
 #include "sl_power_manager.h"
@@ -26,7 +46,7 @@
 #include "sl_system_process_action.h"
 #endif // SL_CATALOG_KERNEL_PRESENT
 
-#include "af.h"
+#include "app/framework/include/af.h"
 
 void app_init(void)
 {
@@ -36,22 +56,22 @@ void app_process_action(void)
 {
 }
 
-#ifdef EMBER_TEST
+#ifdef SL_ZIGBEE_TEST
 int nodeMain(void)
 #else
-void main(int argc, char * argv[])
+int main(int argc, char * argv[])
 #endif
 {
-#ifndef EMBER_TEST
+#ifndef SL_ZIGBEE_TEST
   {
-    // Initialize ezspProcessCommandOptions and gatewayBackchannelStart
+    // Initialize sl_zigbee_ezsp_process_command_options
     // for host apps running on hardware.
     int returnCode;
-    if (emberAfMainStartCallback(&returnCode, argc, argv)) {
+    if (sl_zigbee_af_main_start_cb(&returnCode, argc, argv)) {
       return returnCode;
     }
   }
-#endif // EMBER_TEST
+#endif // SL_ZIGBEE_TEST
 
   // Initialize Silicon Labs device, system, service(s) and protocol stack(s).
   // Note that if the kernel is present, processing task(s) will be created by
@@ -80,4 +100,6 @@ void main(int argc, char * argv[])
 #endif // SL_CATALOG_POWER_MANAGER_PRESENT
   }
 #endif // SL_CATALOG_KERNEL_PRESENT
+
+  return 0;
 }

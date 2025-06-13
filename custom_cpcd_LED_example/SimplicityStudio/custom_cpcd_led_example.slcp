@@ -1,0 +1,95 @@
+project_name: custom_cpcd_led_example
+label: Zigbee - Custom CPCd Commands with LED Example
+description: |
+  This example demonstrates how to create custom cpcd commands.
+category: Example|Zigbee
+package: Zigbee
+quality: experimental
+
+filter:
+  - name: Capability
+    value: [Multiprotocol]
+  - name: Device Type
+    value: [RCP]
+  - name: Project Difficulty
+    value: [Advanced]
+  - name: Wireless Technology
+    value: [Thread, Zigbee]
+
+source:
+  - path: ../rcp/main.c
+  - path: ../rcp/app.c
+  - path: ../rcp/cpc_button_led.c
+
+include:
+  - path: ../rcp
+    file_list:
+    - path: app.h
+    - path: cpc_button_led.h
+    - path: cpc_commands.h
+    - path: reset_util.h
+
+component:
+  - id: simple_button
+    instance: [btn0]
+  - id: simple_led
+    instance: [led0]
+  - id: cli
+    instance: [example]
+  - id: cpc_security_secondary_none
+  - id: cpc_secondary_driver_uart_usart
+    instance: [vcom]
+  - id: bootloader_interface
+  - id: clock_manager
+  - id: ot_crash_handler
+  - id: ot_diags
+  - id: ot_gp_interface
+  - id: ot_ncp_cpc
+  - id: ot_stack_rcp
+  - id: rail_util_pti
+
+configuration:
+  - name: SL_STACK_SIZE
+    value: 5504
+  - name: SL_BOARD_ENABLE_VCOM
+    value: 1
+  - name: SL_CPC_DRV_UART_VCOM_BAUDRATE
+    value: 115200
+  - name: SL_CPC_DRV_UART_VCOM_FLOW_CONTROL_TYPE
+    value: usartHwFlowControlCtsAndRts
+  - name: OPENTHREAD_CONFIG_HEAP_EXTERNAL_ENABLE
+    value: 0
+  - name: OPENTHREAD_CONFIG_LOG_OUTPUT
+    value: OPENTHREAD_CONFIG_LOG_OUTPUT_NONE
+  - name: OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE
+    value: 1
+  - name: OPENTHREAD_CONFIG_MULTIPLE_STATIC_INSTANCE_ENABLE
+    value: 1
+  - name: OPENTHREAD_CONFIG_PLATFORM_KEY_REFERENCES_ENABLE
+    value: 0
+  - name: OPENTHREAD_CONFIG_MAC_CSL_RECEIVER_ENABLE
+    value: 0
+  - name: OPENTHREAD_CONFIG_MAC_CSL_AUTO_SYNC_ENABLE
+    value: 0
+  - name: SL_CPC_RX_BUFFER_MAX_COUNT
+    value: 15
+  - name: SL_CPC_TX_QUEUE_ITEM_MAX_COUNT
+    value: 15
+  - name: CIRCULAR_QUEUE_LEN_MAX
+    value: 16
+
+readme:
+  - path: ../README.md
+
+other_file:
+  - path: ../image/bootloader.png
+    directory: "image"
+  - path: ../image/create_example.png
+    directory: "image"
+  - path: ../image/create_rcp.png
+    directory: "image"
+
+ui_hints:
+  highlight:
+  - path: README.md
+    focus: true

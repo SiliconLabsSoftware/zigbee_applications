@@ -4,7 +4,7 @@
  * @version v0.01
  *******************************************************************************
  * # License
- * <b>Copyright 2021 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2025 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * SPDX-License-Identifier: Zlib
@@ -34,11 +34,10 @@
  * maintained and there may be no bug maintenance planned for these resources.
  * Silicon Labs may update projects from time to time.
  ******************************************************************************/
-
 #ifndef __BATTERY_MONITOR_H__
 #define __BATTERY_MONITOR_H__
 
-void emberAfPluginBatteryMonitorV2InitCallback(void);
+void sl_zigbee_af_plugin_battery_monitor_v2_init_cb(void);
 
 /** @brief Get the temperature in millidegrees Celsius
  *
@@ -48,14 +47,14 @@ void emberAfPluginBatteryMonitorV2InitCallback(void);
  *
  * @return The temperature in millidegrees Celsius
  */
-uint16_t halGetBatteryVoltageMilliV(void);
+uint16_t hal_get_battery_voltage_milliV(void);
 
 /** @brief Initializes the battery monitor hardware.  The application
  * framework will generally initialize this plugin automatically.  Customers who
  * do not use the framework must ensure the plugin is initialized by calling
  * this function.
  */
-void halBatteryMonitorInitialize(void);
+void hal_battery_monitor_initialize(void);
 
 /** @brief Callback generated when new measured battery voltage data is
  * available.
@@ -65,6 +64,6 @@ void halBatteryMonitorInitialize(void);
  *
  * @param voltageMilliV  The battery level measured, in milli volts.
  */
-void BatteryMonitorDataReadyCallback(uint16_t batteryVoltageMilliV);
+void battery_monitor_data_ready_cb(uint16_t battery_voltage_milliV);
 
 #endif // __BATTERY_MONITOR_H__

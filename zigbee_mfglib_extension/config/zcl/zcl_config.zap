@@ -1,5 +1,6 @@
 {
-  "featureLevel": 71,
+  "fileFormat": 2,
+  "featureLevel": 106,
   "creator": "zap",
   "keyValuePairs": [
     {
@@ -18,20 +19,46 @@
   "package": [
     {
       "pathRelativity": "relativeToZap",
-      "path": "../../../../../../../../../app/zcl/zcl-zap.json",
-      "version": "Zigbee Silabs ZCL data",
-      "type": "zcl-properties"
+      "path": "..\\..\\..\\..\\SDKs\\simplicity_sdk\\app\\zcl\\zcl-zap.json",
+      "type": "zcl-properties",
+      "category": "zigbee",
+      "version": 1,
+      "description": "Zigbee Silabs ZCL data"
     },
     {
       "pathRelativity": "relativeToZap",
-      "path": "../../../../../gen-template/gen-templates.json",
-      "version": "zigbee-v0",
-      "type": "gen-templates-json"
+      "path": "..\\..\\..\\..\\SDKs\\simplicity_sdk\\protocol\\zigbee\\app\\framework\\gen-template\\gen-templates.json",
+      "type": "gen-templates-json",
+      "category": "zigbee",
+      "version": "zigbee-v0"
     }
   ],
   "endpointTypes": [
     {
+      "id": 1,
       "name": "Anonymous Endpoint Type",
+      "deviceTypeRef": {
+        "code": 65535,
+        "profileId": 65535,
+        "label": "Custom ZCL Device Type",
+        "name": "Custom ZCL Device Type",
+        "deviceTypeOrder": 0
+      },
+      "deviceTypes": [
+        {
+          "code": 65535,
+          "profileId": 65535,
+          "label": "Custom ZCL Device Type",
+          "name": "Custom ZCL Device Type",
+          "deviceTypeOrder": 0
+        }
+      ],
+      "deviceVersions": [
+        1
+      ],
+      "deviceIdentifiers": [
+        65535
+      ],
       "deviceTypeName": "Custom ZCL Device Type",
       "deviceTypeCode": 65535,
       "deviceTypeProfileId": 65535,
@@ -41,41 +68,15 @@
           "code": 0,
           "mfgCode": null,
           "define": "BASIC_CLUSTER",
-          "side": "client",
-          "enabled": 0,
-          "commands": [],
-          "attributes": [
-            {
-              "name": "cluster revision",
-              "code": 65533,
-              "mfgCode": null,
-              "side": "client",
-              "included": 1,
-              "storageOption": "RAM",
-              "singleton": 1,
-              "bounded": 0,
-              "defaultValue": "3",
-              "reportable": 0,
-              "minInterval": 1,
-              "maxInterval": 65534,
-              "reportableChange": 0
-            }
-          ]
-        },
-        {
-          "name": "Basic",
-          "code": 0,
-          "mfgCode": null,
-          "define": "BASIC_CLUSTER",
           "side": "server",
           "enabled": 1,
-          "commands": [],
           "attributes": [
             {
               "name": "ZCL version",
               "code": 0,
               "mfgCode": null,
               "side": "server",
+              "type": "int8u",
               "included": 1,
               "storageOption": "RAM",
               "singleton": 1,
@@ -91,6 +92,7 @@
               "code": 7,
               "mfgCode": null,
               "side": "server",
+              "type": "enum8",
               "included": 1,
               "storageOption": "RAM",
               "singleton": 1,
@@ -106,6 +108,7 @@
               "code": 65533,
               "mfgCode": null,
               "side": "server",
+              "type": "int16u",
               "included": 1,
               "storageOption": "RAM",
               "singleton": 1,
@@ -128,9 +131,7 @@
       "profileId": 65535,
       "endpointId": 1,
       "networkId": 0,
-      "endpointVersion": 1,
-      "deviceIdentifier": 65535
+      "parentEndpointIdentifier": null
     }
-  ],
-  "log": []
+  ]
 }

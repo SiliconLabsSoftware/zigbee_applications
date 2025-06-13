@@ -1,0 +1,113 @@
+project_name: zigbee_rht_sed
+label: Zigbee - RHT Si7021 Sleepy End-Device
+
+description: >
+  This example shows how to use RHT Si7021 sensor on the EFR32xG24 Dev Kit Board and implement it in your Zigbee project with Simplciity Studio. This application acts as an RHT sensor and periodically reports the measured values to the coordinator.
+
+filter:
+- name: Device Type
+  value: [SoC]
+- name: Project Difficulty
+  value: [Advanced]
+- name: Wireless Technology
+  value: [Zigbee]
+
+package: Zigbee
+quality: experimental
+
+component:
+  - id: zigbee_end_device_support
+  - id: zigbee_pro_leaf_stack
+  - id: zigbee_find_and_bind_initiator
+  - id: zigbee_zcl_framework_core
+  - id: zigbee_debug_basic
+  - id: zigbee_network_steering
+  - id: zigbee_counters
+  - id: zigbee_identify
+  - id: zigbee_basic
+  - id: zigbee_scan_dispatch
+  - id: zigbee_source_route
+  - id: zigbee_debug_print
+  - id: zigbee_reporting
+  - id: sensor_rht
+  - id: zigbee_update_tc_link_key
+  - id: simple_button
+    instance: [btn0, btn1]
+  - id: cli
+    instance: [example]
+  - id: iostream_usart
+    instance: [vcom]
+  - id: simple_led
+    instance: [led0]
+
+readme:
+  - path: ../README.md
+
+source:
+  - path: ../src/zigbee_rht_sed/app.c
+  - path: ../src/zigbee_rht_sed/main.c
+
+config_file:
+  - path: ../config/zcl/zigbee_rht_sed/zcl_config.zap
+    directory: "zcl"
+
+other_file:
+  - path: ../image/app_diagram.png
+    directory: "image"
+  - path: ../image/create_host_app.png
+    directory: "image"
+  - path: ../image/create_sed_app.png
+    directory: "image"
+  - path: ../image/Decryption_keys.jpg
+    directory: "image"
+  - path: ../image/docker.png
+    directory: "image"
+  - path: ../image/host_application_output_log.png
+    directory: "image"
+  - path: ../image/Keys_print_command_output.jpg
+    directory: "image"
+  - path: ../image/Network_Analyzer_capture_example.jpg
+    directory: "image"
+  - path: ../image/Network_Analyzer_event_details.jpg
+    directory: "image"
+  - path: ../image/network_creation_and_info_output.png
+    directory: "image"
+  - path: ../image/network_security.png
+    directory: "image"
+  - path: ../image/project_folder.png
+    directory: "image"
+  - path: ../image/SED_application_output_log.png
+    directory: "image"
+  - path: ../image/SED_button_report_output_log.png
+    directory: "image"
+  - path: ../image/stream_uart_vcom.png
+    directory: "image"
+  - path: ../image/create_ncp.png
+    directory: "image"
+
+configuration:
+  - name: SL_BOARD_ENABLE_VCOM
+    value: "1"
+  - name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+    value: usartHwFlowControlCtsAndRts
+  - name: SL_CLI_MAX_INPUT_ARGUMENTS
+    value: "16"
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+    value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
+  - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
+    value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
+  - name: EMBER_BINDING_TABLE_SIZE
+    value: "10"
+  - name: SL_CLI_PROMPT_STRING
+    value: '"RHT_SED>"'
+  - condition: [device_series_1]
+    name: NVM3_DEFAULT_NVM_SIZE
+    value: '36864'
+  - condition: [device_series_2]
+    name: NVM3_DEFAULT_NVM_SIZE
+    value: '32768'
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

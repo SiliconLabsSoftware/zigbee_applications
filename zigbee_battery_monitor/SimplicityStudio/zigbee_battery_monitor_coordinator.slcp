@@ -17,7 +17,7 @@ filter:
 
 package: Zigbee
 
-quality: production
+quality: experimental
 
 readme:
 - path: ../README.md
@@ -27,7 +27,6 @@ source:
 - path: ../src/coordinator/app.c
 
 component:
-- id: zigbee_application_bootloader
 - id: zigbee_zcl_framework_core
 - id: zigbee_debug_basic
 - id: zigbee_network_steering
@@ -63,11 +62,8 @@ configuration:
   value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
-- name: EMBER_BINDING_TABLE_SIZE
+- name: SL_ZIGBEE_BINDING_TABLE_SIZE
   value: '10'
-- condition: [device_series_1]
-  name: NVM3_DEFAULT_NVM_SIZE
-  value: '36864'
 - condition: [device_series_2]
   name: NVM3_DEFAULT_NVM_SIZE
   value: '32768'
@@ -79,30 +75,26 @@ configuration:
   value: '1'
 
 other_file:
-  - path: ../images/create_coor.png
-    directory: images
-  - path: ../images/create_sed.png
-    directory: images
-  - path: ../images/form.png
-    directory: images
-  - path: ../images/hardware.png
-    directory: images
-  - path: ../images/join.png
-    directory: images
-  - path: ../images/overview.png
-    directory: images
-  - path: ../images/pin_conf.png
-    directory: images
-  - path: ../images/rac_prs_gpio.png
-    directory: images
-  - path: ../images/report.png
-    directory: images
-  - path: ../images/zcl_conf.png
-    directory: images
+  - path: ../image/create_coor.png
+    directory: image
+  - path: ../image/create_sed.png
+    directory: image
+  - path: ../image/form.png
+    directory: image
+  - path: ../image/hardware.png
+    directory: image
+  - path: ../image/join.png
+    directory: image
+  - path: ../image/overview.png
+    directory: image
+  - path: ../image/pin_conf.png
+    directory: image
+  - path: ../image/rac_prs_gpio.png
+    directory: image
+  - path: ../image/report.png
+    directory: image
 
 ui_hints:
   highlight:
-  - path: ''
-    focus: true
   - path: README.md
-
+    focus: true

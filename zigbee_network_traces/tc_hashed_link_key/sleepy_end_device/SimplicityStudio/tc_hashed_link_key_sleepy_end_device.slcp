@@ -1,0 +1,60 @@
+project_name: tc_hashed_link_key_sleepy_end_device
+label: Zigbee - TC Hashed link key - Sleepy end device
+description: |
+  This is a Zigbee minimal SoC network-layer application suitable as a  starting
+  point for new application development.
+category: Example|Zigbee
+package: Zigbee
+quality: experimental
+readme:
+- path: ../../README.md
+source:
+- path: ../src/main.c
+- path: ../src/app.c
+- path: ../src/network_join.c
+include:
+  - path: ../inc
+    file_list:
+    - path: network_join.h
+component:
+- id: cli
+  instance: [example]
+- id: clock_manager
+- id: iostream_recommended_stream
+- id: simple_led
+  instance: [led0]
+- id: zigbee_core_cli
+- id: zigbee_counters
+- id: zigbee_debug_print
+- id: zigbee_network_steering
+- id: zigbee_pro_leaf_stack
+- id: zigbee_scan_dispatch
+- id: zigbee_source_route
+- id: zigbee_update_tc_link_key
+- id: zigbee_zcl_cli
+- id: zigbee_zcl_framework_core
+
+config_file:
+- path: ../config/zcl/zcl_config.zap
+  directory: zcl
+
+configuration:
+- name: SL_CLI_MAX_INPUT_ARGUMENTS
+  value: '16'
+- name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
+
+other_file:
+  - path: ../../image/create_examples.png
+    directory: "image"
+  - path: ../../image/HMAC_Check_Router.png
+    directory: "image"
+  - path: ../../image/RouterLinkKeyPacket.png
+    directory: "image"
+  - path: ../../image/SedLinkKeyPacket.png
+    directory: "image"
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

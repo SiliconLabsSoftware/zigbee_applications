@@ -1,0 +1,83 @@
+project_name: zigbee_smart_lighting_sensor
+label: Zigbee - Smart Lighting - Sensor Node
+description: |
+  This project aims to implement a Zigbee Smart Lighting application using a PIR sensor integrated with the Zigbee wireless stack.
+category: Example|Zigbee
+package: Zigbee
+quality: experimental
+
+readme:
+- path: ../../README.md
+
+source:
+- path: ../src/main.c
+- path: ../src/app.c
+
+component:
+- id: app_timer
+- id: sl_system
+- id: sl_string
+- id: board_control
+- id: mikroe_pir_pl_n823_01
+  from: third_party_hw_drivers
+- id: i2cspm
+  instance: [mikroe]
+- id: simple_button
+  instance: [btn0, btn1]
+- id: simple_led
+  instance: [led0, led1]
+- id: iostream_eusart
+  instance: [vcom]
+- id: cli
+  instance: [example]
+- id: glib
+- id: zigbee_core_cli
+- id: zigbee_zcl_cli
+- id: zigbee_reporting
+- id: zigbee_end_device_support
+- id: zigbee_pro_leaf_stack
+- id: zigbee_find_and_bind_initiator
+- id: zigbee_zcl_framework_core
+- id: zigbee_debug_basic
+- id: zigbee_network_steering
+- id: zigbee_counters
+- id: zigbee_identify
+- id: zigbee_basic  
+- id: zigbee_interpan
+- id: zigbee_scan_dispatch
+- id: zigbee_debug_print
+- id: zigbee_update_tc_link_key
+
+sdk_extension:
+  - id: third_party_hw_drivers
+    version: 4.1.1
+
+config_file:
+  - path: ../config/zcl/zcl_config.zap
+    directory: zcl
+  - override:
+      component: i2cspm
+      file_id: i2cspm_config
+      instance: mikroe
+    path: ../config/xg24/sl_i2cspm_mikroe_config.h
+
+configuration:
+- name: SL_BOARD_ENABLE_VCOM
+  value: '1'
+- name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
+
+other_file:
+- path: ../../image/Flow_Steps.png
+  directory: "image"
+- path: ../../image/create_example.png
+  directory: "image"
+- path: ../../image/Model.png
+  directory: "image"
+- path: ../../image/i2c_config.png
+  directory: "image"
+
+ui_hints:
+  highlight:
+    - path: README.md
+      focus: true

@@ -1,107 +1,165 @@
-# Zigbee Smart Lighting With Motion Sensor PIR #
+# Zigbee - Smart Lighting With Motion Sensor PIR #
 
+![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
+![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
+![License badge](https://img.shields.io/badge/License-Zlib-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+[![Required board](https://img.shields.io/badge/Mikroe-PIR%20Click%20board-green)](https://www.mikroe.com/pir-click)
+![Build badge](https://img.shields.io/badge/Build-passing-green)
+![Flash badge](https://img.shields.io/badge/Flash-260.46%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-18.8%20KB-blue)
 ## Overview ##
 
-This demo shows the implementation of PIR sensor with Zigbee. The PIR sensor on the occupancy sensor EXP board enables the internal ADC of EFR32MG12 to take periodic measurements. CRYOTIMER is set to signal the ADC using PRS. The Op-Amp is configured to use the external one on the board. A simple motion detection algorithm is implemented to post-process ADC samples. Whenever certain motion of the human body is detected, the system will either turn on the light or the alarm. The setup will have at least 2 nodes, 1 for motion detection, 1 for light control. A Zigbee gateway may be involved.
+This project aims to implement a Zigbee Smart Lighting application using a PIR sensor integrated with the Zigbee wireless stack. The PIR sensor on the PIR Click board reads a voltage when exposed to infrared radiation by ADC and converts it to a scaled value in millivolts (mV). By moving in front of the sensor, you can see how the measured voltage values change. Whenever certain motion of the human body is detected, the system will either turn on the light or the alarm. The setup will have at least 2 nodes, 1 for motion detection, 1 for light control. A Zigbee gateway may be involved.
 
-![zigbee](images/Model.png)
+![zigbee](image/Model.png)
 
 In figure above, node 1 is the Zigbee Gateway. Node 2 is the motion sensor. Node 3 is the light. Upon motion detection, node 2 will notify the gateway and turn on the light.
 
-## Gecko SDK version ##
+## SDK version ##
 
-- Gecko SDK 4.4.0
-- [Third Party Hardware Drivers v2.0.0](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
+- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [Third Party Hardware Drivers v4.1.1](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
+
+## Software Required ##
+
+- [Simplicity Studio v5 IDE](https://www.silabs.com/developers/simplicity-studio)
 
 ## Required Hardware ##
 
 For the occupancy sensor node (Node 1):
 
-- BRD4001A WSTK board
-- [EFR32MG12 2.4 GHz 10 dBm Radio Board BRD4162A](https://www.silabs.com/documents/public/reference-manuals/brd4162a-rm.pdf)
-- BRD8030A Occupancy sensor EXP board
+- 1x [BRD4002A WSTK board](https://www.silabs.com/development-tools/wireless/wireless-pro-kit-mainboard?tab=overview)
+- 1x [EFR32xG24 Wireless 2.4 GHz +10 dBm Radio Board](https://www.silabs.com/development-tools/wireless/xg24-rb4186c-efr32xg24-wireless-gecko-radio-board?tab=overview)
+- 1x [PIR Click board](https://www.mikroe.com/pir-click) based on a PL-N8230-01 infrared sensor
 
 For the light node (Node 2):
 
-- BRD4001A WSTK board
-- [EFR32MG12 2.4 GHz 10 dBm Radio Board BRD4162A](https://www.silabs.com/documents/public/reference-manuals/brd4162a-rm.pdf)
-
-**NOTE:**
-Tested boards for working with this example:
-
-| Board ID | Description  |
-| ---------------------- | ------ |
-| BRD4162A | [EFR32MG12 2.4 GHz 10 dBm Radio Board BRD4162A](https://www.silabs.com/documents/public/reference-manuals/brd4162a-rm.pdf)    |
-| BRD4161A | [EFR32MG12 2.4 GHz 19 dBm Radio Board BRD4161A](https://www.silabs.com/documents/public/reference-manuals/brd4161a-rm.pdf)    |
+- 1x [BRD4002A WSTK board](https://www.silabs.com/development-tools/wireless/wireless-pro-kit-mainboard?tab=overview)
+- 1x [EFR32xG24 Wireless 2.4 GHz +10 dBm Radio Board](https://www.silabs.com/development-tools/wireless/xg24-rb4186c-efr32xg24-wireless-gecko-radio-board?tab=overview)
 
 ## Hardware Connection ##
 
-On the sensor node: Connect the occupancy sensor EXP board to the WSTK board through the expansion header.
+We can use some [Wire Jumpers Female to Female](https://www.mikroe.com/wire-jumpers-female-to-female-30cm-10pcs) to connect between Silicon Labs board and the PIR Click board as shown below.
 
-![hardware_connection](images/hardware_connection.png)
+  | Description  | BRD4186C + BRD4002A  | PIR Click          |
+  | -------------| -------------------- | ------------------ |
+  | I2C_SDA      | ULP_GPIO_6 [EXP_16]  | SDA                |
+  | I2C_SCL      | ULP_GPIO_7 [EXP_15]  | SCL                |
+  | GND          | GND [EXP_1]          | GND                |
+  | 3V3          | 3V3 [EXP_20]         | 3V3                |
 
 ## Setup ##
 
-You can either create a project based on an example project or start with an empty example project.
+You can either create a project based on an example project or start with a 'Zigbee - Minimal' example project.
+
+> [!NOTE]
+> Make sure that the [Third Party Hardware Drivers extension](https://github.com/SiliconLabs/third_party_hw_drivers_extension) is installed as part of the SiSDK and the [zigbee_applications](https://github.com/SiliconLabs/zigbee_applications) repository is added to [Preferences > Simplicity Studio > External Repos](https://docs.silabs.com/simplicity-studio-5-users-guide/latest/ss-5-users-guide-about-the-launcher/welcome-and-device-tabs).
 
 ### Create a project based on an example project ###
 
-1. From the Launcher Home, add the BRD4162A to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project with filter "motion".
+1. From the Launcher Home, add the BRD4186C to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project filtering by "lighting".
 
-2. Click **Create** button on the **Zigbee - Smart Light - Light Node** or **Zigbee - Smart Light - Sensor Node** example. Example project creation dialog pops up -> click Create and Finish and Project should be generated.
-![create_example](images/create_example.png)
+2. Click **Create** button on the examples: **Zigbee - Smart Lighting - Light Node** and **Zigbee - Smart Lighting - Sensor Node**. Example project creation dialog pops up -> click Create and Finish and Project should be generated.
+![create_example](image/create_example.png)
 
-3. Build and flash this example to the board.
+3. Build and flash these examples to the boards.
 
-### Start with a ZigbeeMinimal example project ###
+### Start with a Zigbee - Minimal example project ###
 
-1. Create a "Zigbee - SoC ZigbeeMinimal" project for the "EFR32MG12 Radio Board (BRD4162A)" using Simplicity Studio v5. Use the default project settings. Be sure to connect and select the "EFR32MG12 Radio Board (BRD4162A)" from the "Debug Adapters" on the left before creating a project.
+#### Zigbee - Smart Lighting - Sensor Node ####
 
-2. Copy the files from Zigbee_SmartLight_Light/src or Zigbee_SmartLight_Sensor/src folder into the project root folder (overwriting existing app.c, main.c).
+1. Create a "Zigbee - Minimal" project for the "EFR32xG24 Radio Board (BRD4186C)" using Simplicity Studio v5. Use the default project settings.
 
-3. Copy the files from Zigbee_SmartLight_Sensor/config/zcl or Zigbee_SmartLight_Sensor/config/zcl folder into the config/zcl folder of project (overwriting existing zcl_config.zap).
+2. Copy the files from the `zigbee_smart_lighting_sensor/src` folder into the project root folder (overwriting existing files).
 
-4. Install the software components:
+3. Copy the `zigbee_smart_lighting_sensor/config/zcl/zcl_config.zap` file into the `config/zcl` folder of project (overwriting existing zcl_config.zap).
 
-    - Open the .slcp file in the project. - Select the *SOFTWARE COMPONENTS* tab.
-      - Sensor node:
-        - Uninstall:
-          - **[Zigbee] → [Stack] → [Pro Core] → [Pro Stack]** component.
-        - Install the following components:
-          - **[Third Party Hardware Drivers] → [Sensor] → IRA-S210ST01 - PIR sensor**.
-          - **[Platform] → [Driver] → [LED] → [Simple LED]** component with the default instances name: **led0** and **led1**.
-          - **[Platform] → [Driver] → [Button] → [Simple Button]** component with the default instances name: **btn0** and **btn1**.
-          - **[Platform] → [Driver] → [GLIB Graphics Library]** component.
-          - **[Zigbee] → [Cluster Library] → [Common] → [Basic Server Cluster]** component.
-          - **[Zigbee] → [Stack] → [Pro Core] → [Pro Leaf Stack]** component.
-          - **[Zigbee] → [Stack] → [Debug Basic]** component.
-          - **[Zigbee] → [Stack] → [Install code]** component.
-          - **[Zigbee] → [Stack] → [Packet validation]** component.
-          - **[Zigbee] → [Stack] → [Source route]** component.
-          - **[Zigbee] → [Utility] → [Application Framework Common]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Find and Bind Initiator]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Network Steering]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Update TC Link Key]** component.
-    - Light node:
-        - Install the following components:
-          - **[Third Party Hardware Drivers] → [Sensor] → IRA-S210ST01 - PIR sensor**.
-          - **[Platform] → [Driver] → [LED] → [Simple LED]** component with the default instances name: **led0** and **led1**.
-          - **[Platform] → [Driver] → [Button] → [Simple Button]** component with the default instance name: **btn0****.
-          - **[Platform] → [Driver] → [GLIB Graphics Library]** component.
-          - **[Zigbee] → [Cluster Library] → [Common] → [Basic Server Cluster]** component.
-          - **[Zigbee] → [Stack] → [Pro Core] → [Pro Stack]** component.
-          - **[Zigbee] → [Stack] → [Debug Basic]** component.
-          - **[Zigbee] → [Stack] → [Install code]** component.
-          - **[Zigbee] → [Stack] → [Packet validation]** component.
-          - **[Zigbee] → [Stack] → [Source route]** component.
-          - **[Zigbee] → [Utility] → [Application Framework Common]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Find and Bind Target]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Network Steering]** component.
-          - **[Zigbee] → [Zigbee 3.0] → [Update TC Link Key]** component.
+4. Open the .slcp file. Select the **SOFTWARE COMPONENTS** tab and install the software components:
+
+   - [Application] → [Utility] → [Timer]
+   - [Platform] → [Driver] → [I2CSPM] → use the instance: mikroe → Configure this component as below:
+   ![i2c config](image/i2c_config.png)
+   - [Third Party Hardware Drivers] → [Sensor] → [PL-N823-01 - PIR Click (Mikroe)]
+   - [Platform] → [Driver] → [LED] → [Simple LED] → use the default instances name: **led0** and **led1**
+   - [Platform] → [Driver] → [Button] → [Simple Button] → use the default instances name: **btn0** and **btn1**
+   - [Platform] → [Driver] → [GLIB Graphics Library]
+   - [Services] →  [IO Stream] → [IO Stream: USART] → use the default instance name: vcom
+   - [Zigbee] → [Cluster Library] → [Common] → [Basic Server Cluster]
+   - [Zigbee] → [Cluster Library] → [Common] → [Reporting]
+   - [Zigbee] → [Stack] → [Pro Core] → [Pro Stack (Common)] → Uninstall
+   - [Zigbee] → [Stack] → [Pro Core] → [Pro Leaf Stack]
+   - [Zigbee] → [Stack] → [Source route]
+   - [Zigbee] → [Utility] → [Application Framework Common]
+   - [Zigbee] → [Utility] → [End Device Support]
+   - [Zigbee] → [Utility] → [Zigbee Device Config] → Change 'Primary Network Device Type' to 'Sleepy End Device'
+   - [Zigbee] → [Utility] → [Interpan]
+   - [Zigbee] → [Zigbee 3.0] → [Find and Bind Initiator] 
+   - [Zigbee] → [Zigbee 3.0] → [Network Steering]
+   - [Zigbee] → [Zigbee 3.0] → [Update TC Link Key]
+   - [Zigbee] → [Bootloader] → [Zigbee Application Bootloader] → Uninstall
+
+5. Build and flash the project to your board
+
+#### Zigbee - Smart Lighting - Light Node ####
+
+1. Create a "Zigbee - Minimal" project for the "EFR32xG24 Radio Board (BRD4186C)" using Simplicity Studio v5. Use the default project settings.
+
+2. Copy the files from the `zigbee_smart_lighting_light/src` folder into the project root folder (overwriting existing files).
+
+3. Copy the `zigbee_smart_lighting_light/config/zcl/zcl_config.zap` file into the `config/zcl` folder of project (overwriting existing zcl_config.zap).
+
+4. Open the .slcp file. Select the **SOFTWARE COMPONENTS** tab and install the software components:
+
+   - [Platform] → [Driver] → [LED] → [Simple LED] → use the default instances name: **led0** and **led1**
+   - [Platform] → [Driver] → [Button] → [Simple Button] → use the default instance name: **btn0**
+   - [Services] →  [IO Stream] → [IO Stream: USART] → use the default instance name: vcom
+   - [Zigbee] → [Cluster Library] → [Common] → [Basic Server Cluster]
+   - [Zigbee] → [Cluster Library] → [Common] → [Reporting]
+   - [Zigbee] → [Stack] → [Pro Core] → [Pro Stack]
+   - [Zigbee] → [Stack] → [Source route]
+   - [Zigbee] → [Stack] → [Security Link Keys]
+   - [Zigbee] → [Utility] → [Application Framework Common]
+   - [Zigbee] → [Utility] → [Interpan]
+   - [Zigbee] → [Utility] → [Zigbee Device Config] → Change 'Primary Network Device Type' to 'Coordinator or Router'
+   - [Zigbee] → [Zigbee 3.0] → [Find and Bind Target]
+   - [Zigbee] → [Zigbee 3.0] → [Network Steering]
+   - [Zigbee] → [Zigbee 3.0] → [Update TC Link Key]
+   - [Zigbee] → [Zigbee 3.0] → [Network Creator]
+   - [Zigbee] → [Zigbee 3.0] → [Network Creator Security]
+   - [Zigbee] → [Cluster Library] → [Home Automation] → [On/Off Server Cluster]
+   - [Zigbee] → [Zigbee Light Link] → [ZLL Identify Server]
+   - [Zigbee] → [Bootloader] → [Zigbee Application Bootloader] → Uninstall
+
+5. Build and flash the project to your board
 
 ## How It Works ##
 
-The gateway provides CLI commands application interface to the user. The CLI command **"plugin network-creator start 1"** can be issued in order to form a centralized network. The gateway application can then be triggered to allow other devices onto the network with the CLI command  **"plugin network-creator-security open-network"**. Devices can then join the network by manually entering the install code derived link key into the gateway using the CLI command  **"plugin network-creator-security set-joining-link-key"**. The CLI command **"plugin network-creator-security close-network"** will close the network and no longer allow devices onto the gateway's network.
+The gateway provides CLI commands application interface to the user
+
+- To form a centralized network:
+
+  ```bash
+  plugin network-creator start 1
+  ```
+
+- To allow other devices onto the network:
+
+  ```bash
+  plugin network-creator-security open-network
+  ```
+
+- To close the network and no longer allow devices onto the network of the gateway:
+
+  ```bash
+  plugin network-creator-security close-network
+  ```
+
+Devices can then join the network by manually entering the install code derived link key into the gateway using the CLI command:
+
+```bash
+plugin network-creator-security set-joining-link-key
+```
 
 The light board provides a very simplistic user interface. On power up, the light will perform network steering automatically. If the light does not find a suitable network to join, it forms its own distributed network. The light will not open its network for joining as soon as the network comes up, so this must be done manually. Once a distributed network is formed and opened, the sensor may join its network by performing network steering itself. Once the light is on a network, it will set its built-in LED #0. When the light starts identifying as a find and bind target, it will blink its built-in LED #0. The light will start identifying as a find and bind target automatically when it brings its network up, but users can reopen the find and bind target window by pushing button PB1 on the light at any time when it is on a network. LED #1 is used as a simulative light. The state of light is depended on state of motion sensor on the sensor device.
 
@@ -116,7 +174,7 @@ The current debug printing settings in these applications are only for the purpo
 
 The figure below illustrates the working flow for the network with 2 nodes: a light and an occupancy sensor
 
-![zigbee](images/Flow_Steps.png)
+![zigbee](image/Flow_Steps.png)
 
 Make sure both devices are not on any network. Go to the CLI for both and enter the command:
 
@@ -137,7 +195,7 @@ NWK Steering stack status 0x91
 The install code itself is a random value installed on the joining device at manufacturing time and is used to encrypt the initial network key transport from the coordinator to the joining device, via an unique link key. To emulate this, we are going to use commander to flash the install code onto our board. We have included a file install.txt on this page to give you an install code to work with for this example. While you can use any code you want, this code matches the commands you will see in this example and will allow you to easily follow along with our example. To install this via commander, use this command:
 
 ```
-commander flash --tokengroup znet --tokenfile install.txt --device efr32mg12p
+commander flash --tokengroup znet --tokenfile install.txt --device efr32mg24b
 ```
 
 Here is a sample install code file. The CRC for that code is 0xB5C3 and is not included in the file.  
@@ -149,7 +207,7 @@ Install Code: 83FED3407A939723A5C639B26916D505
 Once you have flashed the install code, you can check that it was stored correctly with the following command:
 
 ```
-commander tokendump --tokengroup znet --device efr32mg12p
+commander tokendump --tokengroup znet --device efr32mg24b
 ```
 
 Near the bottom, that the install code is stored on your device:

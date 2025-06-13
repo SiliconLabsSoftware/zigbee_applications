@@ -1,10 +1,9 @@
-# Silicon Labs Project Configuration Tools: slcp, v0, Component selection file.
 project_name: zigbee_mfglib_extension
 label: Zigbee - Manufacturing Library Extension
 description: |
   This project extends manufacturing library plugin with more functionality and commands. Sending and receiving packets, PER test, manipulating tokens, configuring GPIO settings, and changing the power to deci dBm are among the added functionality of this code.
-category: Example|Bluetooth
-package: Bluetooth
+category: Example|Zigbee
+package: Zigbee
 quality: experimental
 readme:
 - path: ../README.md
@@ -23,8 +22,8 @@ component:
   - id: zigbee_debug_basic
   - id: zigbee_debug_print
   - id: zigbee_manufacturing_library_cli
-  - id: "zigbee_pro_stack"
-  - id: "zigbee_zcl_framework_core"
+  - id: zigbee_pro_stack
+  - id: zigbee_zcl_framework_core
 config_file:
   - path: ../config/zcl/zcl_config.zap
     directory: zcl
@@ -90,14 +89,14 @@ template_contribution:
       group: mfglib
       name: clear-tx-packets
       handler: emAfMfglibClearPacketCounter
-      help: Clears the packet Counter(number of transmitted packets).
+      help: Clears the packet Counter (number of transmitted packets).
 
   - name: cli_command
     value:
       group: mfglib
       name: get-tx-packets
       handler: emAfMfglibGetPackets
-      help: Prints packet Counter(number of transmitted packets).
+      help: Prints packet Counter (number of transmitted packets).
 
   - name: cli_command
     value:
@@ -161,18 +160,18 @@ template_contribution:
       help: Give information of GPIO command inputs.
 
 other_file:
-- path: ../images/NAcapture.png
-  directory: "images"
-- path: ../images/PERtest.png
-  directory: "images"
-- path: ../images/ReceiveMode.png
-  directory: "images"
-- path: ../images/contPacktest.png
-  directory: "images"
-- path: ../images/gpiohelp.png
-  directory: "images"
-- path: ../images/create_project.png
-  directory: "images"
+- path: ../image/NAcapture.png
+  directory: "image"
+- path: ../image/PERtest.png
+  directory: "image"
+- path: ../image/ReceiveMode.png
+  directory: "image"
+- path: ../image/contPacktest.png
+  directory: "image"
+- path: ../image/gpiohelp.png
+  directory: "image"
+- path: ../image/create_project.png
+  directory: "image"
 
 ui_hints:
   highlight:
