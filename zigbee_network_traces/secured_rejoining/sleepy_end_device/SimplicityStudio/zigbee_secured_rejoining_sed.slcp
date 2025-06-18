@@ -66,6 +66,8 @@ other_file:
     directory: image
   - path: ../../image/create_project.png
     directory: image
+  - path: ../../trace_secured_rejoining.isd
+  - path: ../../trace_secured_rejoining.pcapng
 
 ui_hints:
   highlight:

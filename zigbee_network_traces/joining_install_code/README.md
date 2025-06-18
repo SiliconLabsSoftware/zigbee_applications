@@ -9,7 +9,7 @@
 
 ## Summary ##
 
-This Project has the goal to demonstrate packet exchanges when a device join a network based on install-code.
+This project has the goal to demonstrate packet exchanges when a device join a network based on install-code.
 Each device has a token in FLASH memory which contains an install-code. From this install-code, we obtain a derived link key by AES-MMO algorithm.
 This key is then added manually (not in the air) to the transient link key table of TC.
 When a device is joining, the TC is then sending the NWK key encrypted with this derived link key. It is then unnecessary to store this link key.
@@ -54,7 +54,8 @@ Connect the radio boards to the WSTK mainboards. Connect your desired gateway de
 
 ### Preparing the Boards ###
 
-You MUST SET a custom Install-code with the program : program_install_code.bat
+You MUST SET a custom Install-code with the program : `program_install_code.bat`
+
 To use it : You can choose your install-code by changing DEFAULT_INSTALL_CODE
 
 You need to use this program for both the SED and Router board

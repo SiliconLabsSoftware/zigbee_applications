@@ -64,6 +64,8 @@ readme:
 other_file:
   - path: ../../image/create_project.png
     directory: image
+  - path: ../../multicast_process_trace.isd
+  - path: ../../multicast_process_trace.pcapng
 
 ui_hints:
   highlight:

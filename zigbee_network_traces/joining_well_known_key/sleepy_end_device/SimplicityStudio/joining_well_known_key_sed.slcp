@@ -1,9 +1,9 @@
-project_name: tc_global_link_key_router
-label: Zigbee - TC global link key - Router
+project_name: joining_well_known_key_sed
+label: Zigbee - Joining with well-known key - Sleepy end device
 author: Silicon Laboratories, Inc.
 description: |
-  This Project demonstrates packet exchanges during the Trust Center process (global link key) on the Router side.
-  
+  This Project demonstrates packet exchanges when a device join a network based on a well-known key on the Sleepy end device side.
+
 category: Example|Zigbee
 
 filter:
@@ -40,8 +40,9 @@ component:
 - id: zigbee_core_cli
 - id: zigbee_counters
 - id: zigbee_debug_print
+- id: zigbee_end_device_support
 - id: zigbee_network_steering
-- id: zigbee_pro_stack_basic
+- id: zigbee_pro_leaf_stack
 - id: zigbee_scan_dispatch
 - id: zigbee_source_route
 - id: zigbee_update_tc_link_key
@@ -56,25 +57,19 @@ configuration:
 - name: SL_BOARD_ENABLE_VCOM
   value: '1'
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
-  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
 
 other_file:
-- path: ../../README.md
 - path: ../../image/result.png
-  directory: "image"
-- path: ../../image/routerLinkKey.png
-  directory: "image"
-- path: ../../image/sedLinkKey.png
   directory: "image"
 - path: ../../image/create_project.png
   directory: "image"
-- path: ../../trace_global_link_key.isd
-- path: ../../trace_global_link_key.pcapng
+- path: ../../trace_joining_well_known_key.isd
+- path: ../../trace_joining_well_known_key.pcapng
 
 ui_hints:
   highlight:
     - path: README.md
       focus: true
-

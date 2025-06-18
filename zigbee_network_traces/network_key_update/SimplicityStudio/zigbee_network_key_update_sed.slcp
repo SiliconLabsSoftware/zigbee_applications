@@ -64,6 +64,8 @@ other_file:
     directory: "image"
   - path: ../image/create_prj.png
     directory: "image"
+  - path: ../trace_nwk_key_update.isd
+  - path: ../trace_nwk_key_update.pcapng
      
 configuration:
   - name: SL_BOARD_ENABLE_VCOM

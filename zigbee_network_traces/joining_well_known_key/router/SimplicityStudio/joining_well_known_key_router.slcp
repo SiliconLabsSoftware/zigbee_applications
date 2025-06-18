@@ -1,9 +1,9 @@
-project_name: tc_global_link_key_router
-label: Zigbee - TC global link key - Router
+project_name: joining_well_known_key_router
+label: Zigbee - Joining with well-known key - Router
 author: Silicon Laboratories, Inc.
 description: |
-  This Project demonstrates packet exchanges during the Trust Center process (global link key) on the Router side.
-  
+  This Project demonstrates packet exchanges when a device join a network based on a well-known key on the Router.
+
 category: Example|Zigbee
 
 filter:
@@ -61,20 +61,14 @@ configuration:
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
 
 other_file:
-- path: ../../README.md
 - path: ../../image/result.png
-  directory: "image"
-- path: ../../image/routerLinkKey.png
-  directory: "image"
-- path: ../../image/sedLinkKey.png
   directory: "image"
 - path: ../../image/create_project.png
   directory: "image"
-- path: ../../trace_global_link_key.isd
-- path: ../../trace_global_link_key.pcapng
+- path: ../../trace_joining_well_known_key.isd
+- path: ../../trace_joining_well_known_key.pcapng
 
 ui_hints:
   highlight:
     - path: README.md
       focus: true
-

@@ -51,6 +51,9 @@ configuration:
 other_file:
 - path: ../../image/create_project.png
   directory: image
+- path: ../../program_install_code.bat
+- path: ../../trace_joining_router_sed.isd
+- path: ../../trace_joining_router_sed.pcapng
 
 ui_hints:
   highlight:

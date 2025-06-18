@@ -59,7 +59,8 @@ Devices store their APP link keys into the link key table. This encryption allow
 - Send `join` to both the Router and SED to allow them to join the network
 - On the SED, send `appLKey {eui64 of router}` to request a key.
 
-Additional Information :\
+Additional Information:
+
 In order to receive the APP Link key on a SED, you must enable the fast polling mode or poll at a high rate. It is done in appLinkKey:
 
 ```c
@@ -71,7 +72,8 @@ sl_zigbee_af_set_wake_timeout_bitmask_cb(currentTask);
 
 ### Interpretation ###
 
-After doing the whole process, it is possible to see that all APP Link keys are stored into the link key table of the 2 nodes involved in the end-to-end communication with this key.\
+After doing the whole process, it is possible to see that all APP Link keys are stored into the link key table of the 2 nodes involved in the end-to-end communication with this key.
+
 ![alt text](image/keys_print_router.png "Keys Print Router")
 ![alt text](image/keys_print_sed.png "Keys Print SED")
 

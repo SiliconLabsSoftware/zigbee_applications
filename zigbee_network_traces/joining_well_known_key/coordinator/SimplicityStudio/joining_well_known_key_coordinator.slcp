@@ -1,9 +1,9 @@
-project_name: tc_global_link_key_router
-label: Zigbee - TC global link key - Router
-author: Silicon Laboratories, Inc.
+project_name: joining_well_known_key_coordinator
+label: Zigbee - Joining with well-known key - Coordinator
+
 description: |
-  This Project demonstrates packet exchanges during the Trust Center process (global link key) on the Router side.
-  
+  This Project demonstrates packet exchanges when a device join a network based on a well-known key on the Coordinator side.
+
 category: Example|Zigbee
 
 filter:
@@ -24,25 +24,26 @@ readme:
 include:
   - path: ../inc
     file_list:
-    - path: network_join.h
+    - path: network_creation.h
 
 source:
 - path: ../src/main.c
-- path: ../src/network_join.c
 - path: ../src/app.c
+- path: ../src/network_creation.c
 
 component:
 - instance: [example]
   id: cli
-- instance: [vcom]
-  id: iostream_usart
+- id: clock_manager
 - id: power_manager_deepsleep
 - id: zigbee_core_cli
 - id: zigbee_counters
 - id: zigbee_debug_print
-- id: zigbee_network_steering
-- id: zigbee_pro_stack_basic
+- id: zigbee_network_creator
+- id: zigbee_network_creator_security
+- id: zigbee_pro_stack
 - id: zigbee_scan_dispatch
+- id: zigbee_security_link_keys
 - id: zigbee_source_route
 - id: zigbee_update_tc_link_key
 - id: zigbee_zcl_cli
@@ -56,25 +57,19 @@ configuration:
 - name: SL_BOARD_ENABLE_VCOM
   value: '1'
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
-  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_COORDINATOR_OR_ROUTER
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
 
 other_file:
-- path: ../../README.md
 - path: ../../image/result.png
-  directory: "image"
-- path: ../../image/routerLinkKey.png
-  directory: "image"
-- path: ../../image/sedLinkKey.png
   directory: "image"
 - path: ../../image/create_project.png
   directory: "image"
-- path: ../../trace_global_link_key.isd
-- path: ../../trace_global_link_key.pcapng
+- path: ../../trace_joining_well_known_key.isd
+- path: ../../trace_joining_well_known_key.pcapng
 
 ui_hints:
   highlight:
     - path: README.md
       focus: true
-

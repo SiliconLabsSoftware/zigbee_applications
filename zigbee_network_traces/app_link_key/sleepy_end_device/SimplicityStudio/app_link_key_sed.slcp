@@ -1,5 +1,5 @@
-project_name: joining_install_code_coordinator
-label: Zigbee - Joining with install code - Coordinator
+project_name: app_link_key_sed
+label: Zigbee - Application Link Key - Sleepy End Device
 description: |
   This Project has the goal to demonstrate packet exchanges when a device join a network based on install-code.
 category: Example|Zigbee
@@ -10,11 +10,13 @@ readme:
 source:
 - path: ../src/main.c
 - path: ../src/app.c
-- path: ../src/network_creation.c
+- path: ../src/network_join.c
+- path: ../src/app_link_key.c
 include:
   - path: ../inc
     file_list:
-    - path: network_creation.h
+    - path: network_join.h
+    - path: app_link_key.h
 component:
 - id: sl_system
 - id: sl_string
@@ -27,7 +29,8 @@ component:
   instance: [vcom]
 - id: cli
   instance: [example]
-- id: zigbee_pro_stack_basic
+- id: zigbee_pro_leaf_stack
+- id: zigbee_end_device_support
 - id: zigbee_zcl_framework_core
 - id: zigbee_debug_basic
 - id: zigbee_network_steering
@@ -48,14 +51,17 @@ configuration:
 - name: SL_BOARD_ENABLE_VCOM
   value: '1'
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
-  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_COORDINATOR_OR_ROUTER
+  value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
 
 other_file:
+- path: ../../image/keys_print_router.png
+  directory: image
+- path: ../../image/keys_print_sed.png
+  directory: image
 - path: ../../image/create_project.png
   directory: image
-- path: ../../program_install_code.bat
-- path: ../../trace_joining_router_sed.isd
-- path: ../../trace_joining_router_sed.pcapng
+- path: ../../trace_app_link_key.isd
+- path: ../../trace_app_link_key.pcapng
 
 ui_hints:
   highlight:
