@@ -645,4 +645,49 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
+  <descriptors name="zigbee_lock_coordinator" label="Zigbee - Lock Coordinator" 
+               description="This appliction is used to create a zigbee lock coordinator with the Silicon Labs EFR32xG21.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_coordinator/zigbee_lock_coordinator.slcp"/>
+    <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
+    <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
+    <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="Zigbee Application"/>
+    <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
+  <descriptors name="zigbee_lock_controller" label="Zigbee - Lock Controller" 
+               description="This appliction is used to create a zigbee lock controller with the Silicon Labs EFR32xG21.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_controller/zigbee_lock_controller.slcp"/>
+    <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
+    <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
+    <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="Zigbee Application"/>
+    <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
+  <descriptors name="zigbee_lock" label="Zigbee - Lock" 
+               description="This appliction is used to create a zigbee lock device with the Silicon Labs EFR32xG21.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock/zigbee_lock.slcp"/>
+    <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
+    <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
+    <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="Zigbee Application"/>
+    <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
 </model:MDescriptors>

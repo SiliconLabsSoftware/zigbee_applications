@@ -31,6 +31,7 @@ This repository provides only SLCP projects (as External Repositories) that are 
 | 8  | Zigbee - Philips Hue Smart Light with Home Assistant OS | [Click here](./zigbee_philips_hue_with_home_assistant_os) |
 | 9  | Zigbee - Custom CPCd Command Project with LED Example | [Click here](./custom_cpcd_LED_example) |
 | 10  | Zigbee - Network Traces | [Click Here](./zigbee_network_traces) |
+| 11 | Zigbee - Door Lock Tutorial | [Click Here](./zigbee_door_lock_tutorial) |
 
 ## Working with Projects ##
 
