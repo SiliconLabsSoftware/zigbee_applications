@@ -11,7 +11,7 @@ source:
 - path: ../src/main.c
 - path: ../src/manufacturing-library-cli-soc-extend.c
 component:
-  - id: sl_system
+  - id: sl_main
   - id: sl_string
   - id: board_control
   - id: cli

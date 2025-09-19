@@ -16,7 +16,7 @@ include:
     file_list:
     - path: network_creation.h
 component:
-- id: sl_system
+- id: sl_main
 - id: sl_string
 - id: board_control
 - instance: [btn0, btn1]

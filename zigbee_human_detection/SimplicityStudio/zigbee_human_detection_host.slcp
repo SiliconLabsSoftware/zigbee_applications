@@ -22,6 +22,7 @@ source:
 - path: ../src/zigbee_human_detection_host/app.c
 
 component:
+- id: sl_main
 - instance: [example]
   id: cli
 - id: iostream_stdio

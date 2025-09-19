@@ -14,7 +14,7 @@ source:
 - path: ../src/app.c
 
 component:
-- id: sl_system
+- id: sl_main
 - id: board_control
 - id: simple_button
   instance: [btn0, btn1]

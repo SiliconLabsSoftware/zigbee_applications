@@ -7,7 +7,7 @@ description: |
   This project shows the Secured Rejoining in the case an End-device is aged out of the child table of its parent.
 
 component:
-  - id: sl_system
+  - id: sl_main
   - id: board_control
   - id: iostream_usart
     instance: [vcom]
@@ -38,7 +38,6 @@ configuration:
     value: "\"zigbee_RO>\""
 
 source:
-  - path: ../src/main.c
   - path: ../src/app.c
   - path: ../src/network_join.c
 

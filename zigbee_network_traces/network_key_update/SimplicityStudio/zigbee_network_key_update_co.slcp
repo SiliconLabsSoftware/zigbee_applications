@@ -15,6 +15,7 @@ package: Zigbee
 quality: experimental
 
 component:
+  - id: sl_main
   - instance: [example]
     id: cli
   - id: iostream_recommended_stream

@@ -34,6 +34,7 @@ include:
   - path: ../inc/zigbee_human_detection_end_device/recognize_commands.h
 
 component:
+  - id: sl_main
   - id: zigbee_core_cli
   - id: zigbee_counters
   - id: zigbee_debug_print
@@ -94,7 +95,7 @@ configuration:
   value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_END_DEVICE
 - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
   value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
-- name: EMBER_BINDING_TABLE_SIZE
+- name: SL_ZIGBEE_BINDING_TABLE_SIZE
   value: '10'
 - condition: [device_series_1]
   name: NVM3_DEFAULT_NVM_SIZE
@@ -181,9 +182,9 @@ other_file:
 
 sdk_extension:
 - id: third_party_hw_drivers
-  version: 4.1.1
+  version: 4.4.0
 - id: aiml
-  version: 2.0.0
+  version: 2.1.0
 
 ui_hints:
   highlight:

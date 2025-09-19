@@ -41,6 +41,7 @@
 #include "find-and-bind-initiator.h"
 #include "af.h"
 #include "network-formation.h"
+#include "sl_simple_button_instances.h"
 
 #define TRANSITION_TIME_DS           20
 #define FINDING_AND_BINDING_DELAY_MS 3000
@@ -199,7 +200,7 @@ void sl_zigbee_af_find_and_bind_initiator_complete_cb(sl_status_t status)
  *
  * Application framework equivalent of ::emberRadioNeedsCalibratingHandler
  */
-void emberAfRadioNeedsCalibratingCallback(void)
+void sl_zigbee_af_radio_needs_calibrating_cb(void)
 {
   sl_mac_calibrate_current_channel();
 }
@@ -233,13 +234,13 @@ void sl_button_on_change(const sl_button_t *handle)
 #endif
 
 // Internal testing stuff
-#if defined(EMBER_TEST)
-void emberAfHalButtonIsrCallback(uint8_t button,
-                                 uint8_t state)
+#if defined(SL_ZIGBEE_TEST)
+void sl_zigbee_af_hal_button_isr_cb(uint8_t button,
+                                    uint8_t state)
 {
   if (state == BUTTON_RELEASED) {
     sl_zigbee_event_set_active(&commissioning_event);
   }
 }
 
-#endif // EMBER_TEST
+#endif // SL_ZIGBEE_TEST

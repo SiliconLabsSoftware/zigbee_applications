@@ -2,10 +2,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-236.14%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-16.1%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-240.01%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-16.73%20KB-blue)
 
 ## Summary ##
 
@@ -16,7 +16,7 @@ For this project, we use the TC unique link keys.
 
 ## SDK version ##
 
-[SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+[SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 

@@ -7,7 +7,7 @@ description: |
   The following article will demonstrate how to create a multicast command to send to a specific groupId. It is sending ON/Off command to lights present in the network. It also provides files to create Network (for Coordinator), joining, and create groups.
 
 component:
-  - id: sl_system
+  - id: sl_main
   - id: board_control
   - id: iostream_usart
     instance: [vcom]

@@ -3,10 +3,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-225.65%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-14.48%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-228.44%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-15.1%20KB-blue)
 
 ## Summary ##
 
@@ -14,7 +14,7 @@ To connect to a network, you can use either the well-known key which is "ZigbeeA
 
 ## SDK Version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 

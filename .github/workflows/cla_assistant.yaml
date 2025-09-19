@@ -1,4 +1,4 @@
-name: 03-CLA-Assistant
+name: CLA-Assistant
 ## This workflow is used for public repositories
 
 on:
@@ -14,7 +14,7 @@ permissions:
   statuses: write
 
 jobs:
-  CLAAssistant:
+  cla_assistant:
     if: github.repository_visibility == 'public'
     runs-on: ubuntu-24.04
     steps:

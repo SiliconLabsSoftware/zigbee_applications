@@ -17,7 +17,6 @@ filter:
     value: [Thread, Zigbee]
 
 source:
-  - path: ../rcp/main.c
   - path: ../rcp/app.c
   - path: ../rcp/cpc_button_led.c
 
@@ -30,37 +29,45 @@ include:
     - path: reset_util.h
 
 component:
+  - id: sl_main
   - id: simple_button
     instance: [btn0]
   - id: simple_led
     instance: [led0]
-  - id: cli
-    instance: [example]
   - id: cpc_security_secondary_none
+  - id: ot_crash_handler
+  - id: ot_stack_rcp
+  - id: ot_ncp_cpc
   - id: cpc_secondary_driver_uart_usart
     instance: [vcom]
-  - id: bootloader_interface
-  - id: clock_manager
-  - id: ot_crash_handler
-  - id: ot_diags
-  - id: ot_gp_interface
-  - id: ot_ncp_cpc
-  - id: ot_stack_rcp
+    condition: [device_series_2]
   - id: rail_util_pti
+  - id: ot_gp_interface
+  - id: clock_manager
+  - id: ot_diags
+  - id: ot_reset_utils
+  # Platform - Enable LTO for gcc by installing the following component
+  - id: toolchain_gcc_lto
 
 configuration:
+  - name: SL_MAIN_START_TASK_STACK_SIZE_BYTES
+    value: 2752
+    condition: [sl_main]
   - name: SL_STACK_SIZE
-    value: 5504
+    value: 2752
   - name: SL_BOARD_ENABLE_VCOM
     value: 1
   - name: SL_CPC_DRV_UART_VCOM_BAUDRATE
     value: 115200
   - name: SL_CPC_DRV_UART_VCOM_FLOW_CONTROL_TYPE
     value: usartHwFlowControlCtsAndRts
+    condition: [cpc_secondary_driver_uart_usart]
   - name: OPENTHREAD_CONFIG_HEAP_EXTERNAL_ENABLE
     value: 0
   - name: OPENTHREAD_CONFIG_LOG_OUTPUT
     value: OPENTHREAD_CONFIG_LOG_OUTPUT_NONE
+  - name: OPENTHREAD_CONFIG_MULTIPAN_RCP_ENABLE
+    value: 0
   - name: OPENTHREAD_CONFIG_MULTIPLE_INSTANCE_ENABLE
     value: 1
   - name: OPENTHREAD_CONFIG_MULTIPLE_STATIC_INSTANCE_ENABLE
@@ -77,6 +84,8 @@ configuration:
     value: 15
   - name: CIRCULAR_QUEUE_LEN_MAX
     value: 16
+  - name: SL_OPENTHREAD_STACK_TASK_MEM_SIZE
+    value: 4608
 
 readme:
   - path: ../README.md

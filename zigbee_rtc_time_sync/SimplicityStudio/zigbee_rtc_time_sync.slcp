@@ -26,6 +26,7 @@ source:
 - path: ../src/end_device/app.c
 
 component:
+- id: sl_main
 - instance: [example]
   id: cli
 - id: zigbee_zcl_framework_core

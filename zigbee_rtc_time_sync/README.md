@@ -3,18 +3,18 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-231.99%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-15.59%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-235.04%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-16.23%20KB-blue)
 
 ## Summary ##
 
-In a common Zigbee network, the gateway normally has the capability of connecting to the internet, so it can get the date and time through NTP (Network Time Protocol), which is a networking protocol for clock synchronization between computer systems over packet-switched, variable-latency data networks. Therefore, the gateway can act as the time server to provide the time source for the other Zigbee devices. This example demonstrates how we synchronize the date and time in the Zigbee network. On the device side, the local date and time will be kept by the plugin **Simple Clock**.
+In a typical Zigbee network, the gateway is equipped with internet connectivity, enabling it to synchronize its internal clock using the Network Time Protocol (NTP)—a standard protocol designed for clock synchronization across computer systems over variable-latency networks. Once synchronized, the gateway can serve as a time server for the Zigbee network, distributing accurate date and time information to connected devices. On the device side, local timekeeping is managed by the **Simple Clock** plugin, which maintains the current date and time based on the information received from the gateway.
 
 ## SDK version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 
@@ -63,7 +63,7 @@ The hardware connection is shown in the image below:
 
 1. From the Launcher Home, add "Linux 64 Bit" to My Products, click on it, and click on the **EXAMPLE PROJECTS & DEMOS** tab. Find the example project filtering by "host gateway".
 
-2. Click **Create** button on the **Zigbee - Host Gateway** example. Example project creation dialog pops up -> click Create and Finish and Project should be generated.
+2. Click **Create** button on the **Zigbee - Z3Gateway** example. Example project creation dialog pops up -> click Create and Finish and Project should be generated.
 
    ![host_gateway](image/create_gateway.png)
 

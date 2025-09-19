@@ -39,6 +39,7 @@
 #include "app/util/zigbee-framework/zigbee-device-common.h"
 #include "stack/include/trust-center.h"
 #include "zap-cluster-command-parser.h"
+#include <sys/time.h>
 #include <stdlib.h>
 #include "stack/include/zigbee-security-manager.h"
 
@@ -354,3 +355,27 @@ bool sl_zigbee_af_get_endpoint_info_cb(int8u endpoint,
 }
 
 #endif // SL_CATALOG_ZIGBEE_AF_SUPPORT_PRESENT
+
+#define TIME_UNIX_EPOCH                     (1970u)
+#define TIME_ZIGBEE_EPOCH                   (2000u)
+#define TIME_SEC_PER_DAY                    (60u * 60u * 24u)
+#define TIME_ZIGBEE_UNIX_EPOCH_DIFF         (TIME_ZIGBEE_EPOCH \
+                                             - TIME_UNIX_EPOCH)
+#define TIME_DAY_COUNT_ZIGBEE_TO_UNIX_EPOCH (TIME_ZIGBEE_UNIX_EPOCH_DIFF \
+                                             * 365u + 7u)
+// 30 years and 7 leap days
+#define TIME_ZIGBEE_EPOCH_OFFSET_SEC        (TIME_DAY_COUNT_ZIGBEE_TO_UNIX_EPOCH \
+                                             * TIME_SEC_PER_DAY)
+
+int32u sl_zigbee_af_get_current_time_cb(void)
+{
+  struct timeval tv;
+  gettimeofday(&tv, NULL);
+
+  // Round the micro seconds
+  if (tv.tv_usec >= 500000) {
+    tv.tv_sec++;
+  }
+  printf("time: %lx\r\n", tv.tv_sec - TIME_ZIGBEE_EPOCH_OFFSET_SEC);
+  return tv.tv_sec - TIME_ZIGBEE_EPOCH_OFFSET_SEC;
+}

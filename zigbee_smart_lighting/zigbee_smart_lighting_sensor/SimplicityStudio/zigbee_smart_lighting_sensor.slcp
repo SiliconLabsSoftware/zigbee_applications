@@ -15,7 +15,7 @@ source:
 
 component:
 - id: app_timer
-- id: sl_system
+- id: sl_main
 - id: sl_string
 - id: board_control
 - id: mikroe_pir_pl_n823_01
@@ -50,7 +50,7 @@ component:
 
 sdk_extension:
   - id: third_party_hw_drivers
-    version: 4.1.1
+    version: 4.4.0
 
 config_file:
   - path: ../config/zcl/zcl_config.zap

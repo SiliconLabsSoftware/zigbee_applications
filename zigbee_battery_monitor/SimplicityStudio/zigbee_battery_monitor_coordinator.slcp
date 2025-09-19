@@ -27,6 +27,7 @@ source:
 - path: ../src/coordinator/app.c
 
 component:
+- id: sl_main
 - id: zigbee_zcl_framework_core
 - id: zigbee_debug_basic
 - id: zigbee_network_steering

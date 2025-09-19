@@ -3,16 +3,18 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-215.66%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-14.3%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-242.86%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-15.86%20KB-blue)
+
 ## Summary ##
+
 To make sure that every device does not reach the maximum value of the frame counter, the coordinator (TC) needs to perform an network key (NWK) update. This update should be done periodically at long intervals. The case of sleepy end device (SED) is very specific. For example, if the SED is in the sleep state, it is not going to receive any message and therefore miss the NWK key Update. It then needs to perform a rejoin to the NWK.
 
 ## SDK version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 

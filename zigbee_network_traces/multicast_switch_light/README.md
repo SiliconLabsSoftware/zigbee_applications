@@ -2,10 +2,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-256.07%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-15.75%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-260.2%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-16.39%20KB-blue)
 
 ## Overview ##
 
@@ -15,7 +15,7 @@ It also provides files to create Network (for Coordinator), joining, and create 
 
 ## SDK version ##
 
-[SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+[SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 

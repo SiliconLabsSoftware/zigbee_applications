@@ -15,6 +15,7 @@ package: Zigbee
 quality: experimental
 
 component:
+  - id: sl_main
   - id: zigbee_zll_scenes_client
   - id: zigbee_end_device_support
   - id: zigbee_pro_leaf_stack
@@ -95,7 +96,7 @@ configuration:
     value: 'SLI_ZIGBEE_NETWORK_DEVICE_TYPE_END_DEVICE'
   - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
     value: 'SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0'
-  - name: EMBER_BINDING_TABLE_SIZE
+  - name: SL_ZIGBEE_BINDING_TABLE_SIZE
     value: '10'
   - name: SL_IOSTREAM_USART_VCOM_RESTRICT_ENERGY_MODE_TO_ALLOW_RECEPTION
     value: '0'
@@ -129,7 +130,7 @@ configuration:
     value: '0'
   - name: SL_ZIGBEE_DEBUG_ZCL_GROUP_RUNTIME_DEFAULT
     value: '0'
-  - name: EMBER_AF_PLUGIN_ZCL_FRAMEWORK_CORE_CLI_ENABLED
+  - name: SL_ZIGBEE_AF_PLUGIN_ZCL_FRAMEWORK_CORE_CLI_ENABLED
     value: '0'
   - condition: [brd4180a, brd4181a]
     name: SL_SIMPLE_BUTTON_BTN0_PORT
@@ -143,6 +144,10 @@ configuration:
     value: '0'
   - name: SL_ZIGBEE_WATCHDOG_REFRESH_DURATION_MS
     value: '5000'
+  - name: SL_SIMPLE_BUTTON_BTN0_PORT
+    value: SL_GPIO_PORT_A
+  - name: SL_SIMPLE_BUTTON_BTN0_PIN
+    value: 2
 
 tag:
   - hardware:rf:band:2400

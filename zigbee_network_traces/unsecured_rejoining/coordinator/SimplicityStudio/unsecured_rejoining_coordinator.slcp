@@ -18,7 +18,7 @@ include:
     - path: network_creation.h
     - path: nwk_key_update.h
 component:
-- id: sl_system
+- id: sl_main
 - id: sl_string
 - id: board_control
 - instance: [btn0, btn1]

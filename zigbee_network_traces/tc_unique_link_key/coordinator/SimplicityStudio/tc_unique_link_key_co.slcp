@@ -15,9 +15,9 @@ package: Zigbee
 quality: experimental
 
 component:
+  - id: sl_main
   - id: cli
     instance: [example]
-  - id: zigbee_application_bootloader
   - id: zigbee_basic
   - id: zigbee_counters
   - id: zigbee_debug_print

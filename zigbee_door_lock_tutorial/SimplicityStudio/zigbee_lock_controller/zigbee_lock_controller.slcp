@@ -20,6 +20,7 @@ source:
 - path: ../../src/zigbee_lock_controller/app.c
 
 component:
+- id: sl_main 
 - instance: [example]
   id: cli
 - id: clock_manager

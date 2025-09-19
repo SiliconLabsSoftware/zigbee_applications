@@ -1,18 +1,20 @@
 # Optimization on EM2 Current Consumption of the Zigbee - Soc Switch #
-## Summary ##
+
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-220.51%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-16.42%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-223.38%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-17.07%20KB-blue)
+
+## Summary ##
 
 This application is used to create a Zigbee sleepy end device with the Silicon Labs EFR32xG21 Bluetooth Starter Kit board. It puts the device into EM2 mode for saving energy. For reaching optimization, this example disables some features like virtual VCOM, debug in EM2 mode, debug printing and so on. You can see the current consumption reduce significantly through this application.
 
 ## SDK version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 

@@ -111,7 +111,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_sed_rht_sensor/SimplicityStudio/zigbee_rht_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_sed_rht_sensor/README.md"/>
-    <properties key="boardCompatibility" value="brd2601b com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd2601b brd4186c brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -186,7 +186,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_co.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -201,7 +201,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_ro.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -216,7 +216,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -306,7 +306,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/joining_well_known_key/coordinator/SimplicityStudio/joining_well_known_key_coordinator.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/joining_well_known_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd4186c brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd4186c brd2601b brd4187c brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -314,14 +314,14 @@
     <properties key="quality" value="EXPERIMENTAL"/>
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Wireless Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
-  </descriptors>  
+  </descriptors>
   <descriptors name="zigbee_joining_well_known_key_router" label="Zigbee - Joining with well-known key - Router"
                description="This project aims to implement a router device to demonstrate joining with well-known key in the Zigbee network.">
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/joining_well_known_key/router/SimplicityStudio/joining_well_known_key_router.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/joining_well_known_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -336,7 +336,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/joining_well_known_key/sleepy_end_device/SimplicityStudio/joining_well_known_key_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/joining_well_known_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -351,7 +351,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_unique_link_key/coordinator/SimplicityStudio/tc_unique_link_key_co.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_unique_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -366,7 +366,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_unique_link_key/router/SimplicityStudio/tc_unique_link_key_ro.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_unique_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -381,7 +381,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_unique_link_key/sleepy_end_device/SimplicityStudio/tc_unique_link_key_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_unique_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181b brd4182a brd2601b brd2703a brd2710a brd4186c brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -555,7 +555,7 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
-   <descriptors name="zigbee_tc_global_link_key_coordinator" label="Zigbee - TC global link key - Coordinator"
+  <descriptors name="zigbee_tc_global_link_key_coordinator" label="Zigbee - TC global link key - Coordinator"
                 description="This project shows how to configure the Coordinator to work with Trust Center process with global link key in a Zigbee network.">
      <properties key="namespace" value="template.uc"/>
      <properties key="keywords" value="universal\ configurator"/>
@@ -569,8 +569,8 @@
      <properties key="quality" value="EXPERIMENTAL"/>
      <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
      <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
-   </descriptors>
-   <descriptors name="zigbee_tc_global_link_key_router" label="Zigbee - TC global link key - Router"
+  </descriptors>
+  <descriptors name="zigbee_tc_global_link_key_router" label="Zigbee - TC global link key - Router"
                 description="This project shows how to configure the Router to work with Trust Center process with global link key in a Zigbee network.">
      <properties key="namespace" value="template.uc"/>
      <properties key="keywords" value="universal\ configurator"/>
@@ -584,8 +584,8 @@
      <properties key="quality" value="EXPERIMENTAL"/>
      <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
      <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
-   </descriptors>
-   <descriptors name="zigbee_tc_global_link_key_sed" label="Zigbee - TC global link key - Sleepy End Device"
+  </descriptors>
+  <descriptors name="zigbee_tc_global_link_key_sed" label="Zigbee - TC global link key - Sleepy End Device"
                 description="This project shows how to configure the Sleepy end device to work with Trust Center process with global link key in a Zigbee network.">
      <properties key="namespace" value="template.uc"/>
      <properties key="keywords" value="universal\ configurator"/>
@@ -606,7 +606,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_hashed_link_key/coordinator/SimplicityStudio/tc_hashed_link_key_coordinator.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_hashed_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -621,7 +621,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_hashed_link_key/router/SimplicityStudio/tc_hashed_link_key_router.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_hashed_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -636,7 +636,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/tc_hashed_link_key/sleepy_end_device/SimplicityStudio/tc_hashed_link_key_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/tc_hashed_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>

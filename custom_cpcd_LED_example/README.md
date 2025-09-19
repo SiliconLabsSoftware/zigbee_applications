@@ -3,10 +3,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-154.09%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-17.93%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-124.44%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-14.1%20KB-blue)
 ## Overview ##
 
 This example demonstrates how to create custom cpcd commands. The application allows the user to type either '1' or '0' from the primary (host) to turn on or off the LED on the secondary (RCP). Similarily, button 0 on the RCP will toggle the LED on the RCP. Pressing 'q' will terminate the application.
@@ -27,7 +27,7 @@ Both APIs will return a negative value in case of error, otherwise it will retur
 
 ## SDK version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
 
 ## Software Required ##
 
@@ -36,7 +36,7 @@ Both APIs will return a negative value in case of error, otherwise it will retur
 ## Required Hardware ##
 
 - 1x [BRD4002A WSTK board](https://www.silabs.com/development-tools/wireless/wireless-pro-kit-mainboard?tab=overview)
-- 1x [EFR32xG21 Wireless 2.4 GHz +10 dBm Radio Board](https://www.silabs.com/development-tools/wireless/slwrb4181b-efr32xg21-wireless-gecko-radio-board?tab=overview)
+- 1x [EFR32xG24 Wireless 2.4 GHz +10 dBm Radio Board](https://www.silabs.com/development-tools/wireless/xg24-rb4186c-efr32xg24-wireless-gecko-radio-board?tab=overview)
 - 1x Raspberry Pi 4 with CPCd installed
 
 > [!TIP]
@@ -98,8 +98,8 @@ You can either create a project based on an example project or start with a 'Zig
 3. Copy the *sl_cpc.h* header file from '*/usr/local/include*' to overwrite the existing one in '*custom_cpc_host*' directory
 4. cd to the *custom_cpc_host* directory
 5. Run the command: `sudo make -f Makefile`
-6. From the current terminal, start cpcd (/usr/local/bin/cpcd)
-7. Open another terminal, start the host app ( ./cpcledbutton)
+6. From the current terminal, start cpcd (sudo /usr/local/bin/cpcd)
+7. Open another terminal, start the host app (sudo ./cpcledbutton)
 
 ## How It Works ##
 

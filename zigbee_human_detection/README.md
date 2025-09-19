@@ -3,12 +3,12 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2024.12.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
 [![Required board](https://img.shields.io/badge/Sparkfun-MLX90640%20IR%20Array%20(MLX90640%20FIR%20sensor)-green)](https://www.sparkfun.com/products/14844)
 [![Required board](https://img.shields.io/badge/Sparkfun-Micro%20OLED%20Breakout%20(Qwiic)%20board-green)](https://www.sparkfun.com/products/14532)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-280.33%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-30.71%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-283.19%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-31.1%20KB-blue)
 
 ## Overview ##
 
@@ -20,9 +20,9 @@ The following picture shows the system view of how it works.
 
 ## SDK version ##
 
-- [SiSDK v2024.12.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2024.12.0)
-- [Third Party Hardware Drivers v4.1.1](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
-- [AI/ML - Alpha - 2.0.0](https://github.com/SiliconLabsSoftware/aiml-extension)
+- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [Third Party Hardware Drivers v4.4.0](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
+- [AI/ML - Alpha - 2.1.0](https://github.com/SiliconLabsSoftware/aiml-extension)
 
 ## Software Required ##
 
@@ -91,9 +91,9 @@ You can either create a project based on an example project or start with a 'Zig
 
 3. Build and run the Host App in the Container.
 
-##### Create a Zigbee Host from a 'Zigbee - Z3Switch' #####
+##### Create a Zigbee Host from a 'Zigbee - Z3Gateway' #####
 
-1. Create a 'Zigbee - Z3Switch' project for the device 'Linux 32 Bit' with **Copy contents** using Simplicity Studio 5.
+1. Create a 'Zigbee - Z3Gateway' project for the device 'Linux 32 Bit' with **Copy contents** using Simplicity Studio 5.
 2. Copy all attached files in `src/zigbee_human_detection_host` folder into the project root folder (overwriting existing).
 3. Select Z3Gateway.slcp and install the following component for the device:
 

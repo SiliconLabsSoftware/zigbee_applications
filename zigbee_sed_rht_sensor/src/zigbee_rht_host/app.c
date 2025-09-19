@@ -339,13 +339,13 @@ void version_command(sl_cli_command_arg_t *arguments)
   sl_zigbee_app_debug_println(" %s", __DATE__);
   sl_zigbee_app_debug_println(" %s", __TIME__);
   sl_zigbee_app_debug_println("");
-#ifdef EMBER_TEST
+#ifdef SL_ZIGBEE_TEST
   sl_zigbee_app_debug_println(
     "Print formatter test : 0x%x=0x12, 0x%02x=0x1234 0x%04x=0x12345678",
     0x12,
     0x1234,
     0x12345678);
-#endif
+#endif // SL_ZIGBEE_TEST
 }
 
 void set_txpower_command(sl_cli_command_arg_t *arguments)

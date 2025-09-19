@@ -16,6 +16,7 @@ package: Zigbee
 quality: experimental
 
 component:
+  - id: sl_main
   - id: zigbee_end_device_support
   - id: zigbee_pro_leaf_stack
   - id: zigbee_find_and_bind_initiator

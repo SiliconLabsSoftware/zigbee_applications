@@ -17,6 +17,7 @@ include:
     file_list:
     - path: network_join.h
 component:
+- id: sl_main
 - id: cli
   instance: [example]
 - id: clock_manager

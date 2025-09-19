@@ -32,6 +32,7 @@ source:
 - path: ../src/network_creation.c
 
 component:
+- id: sl_main
 - instance: [example]
   id: cli
 - id: clock_manager

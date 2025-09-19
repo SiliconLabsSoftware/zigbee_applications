@@ -21,6 +21,7 @@ source:
   - path: ../src/zigbee_rht_host/main.c
 
 component:
+  - id: sl_main
   - id: zigbee_ota_server
   - id: zigbee_level_control
   - id: zigbee_counters
@@ -29,7 +30,6 @@ component:
   - id: zigbee_trust_center_nwk_key_update_unicast
   - id: zigbee_basic
   - id: zigbee_time_server
-  - id: linux_arch_32
   - id: zigbee_poll_control_client
   - id: zigbee_ota_common
   - id: zigbee_green_power_client
@@ -152,6 +152,12 @@ configuration:
     value: "1"
   - name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
     value: "usartHwFlowControlCtsAndRts"
+    condition: [iostream_usart]
+  - name: SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE
+    value: "SL_IOSTREAM_EUSART_UART_FLOW_CTRL_CTS_RTS"
+    condition: [iostream_eusart]
+  - name: SL_CLI_EXAMPLE_IOSTREAM_HANDLE
+    value: "sl_iostream_get_default()"
   - name: SL_CLI_MAX_INPUT_ARGUMENTS
     value: "16"
   - name: SLI_ZIGBEE_PRIMARY_NETWORK_DEVICE_TYPE
