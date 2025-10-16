@@ -2,7 +2,7 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/Simplicity_SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/Simplicity_SDK-v2025.6.2-green)
 
 ## Summary ##
 
@@ -40,7 +40,7 @@ You can see in all the projects the following structures:
 
 ## SDK version ##
 
-- [Simplicity SDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [Simplicity SDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 
 ## Hardware Required ##
 

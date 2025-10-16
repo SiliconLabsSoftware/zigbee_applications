@@ -79,7 +79,7 @@ configuration:
     value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_ROUTER
   - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
     value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
-  - name: EMBER_BINDING_TABLE_SIZE
+  - name: SL_ZIGBEE_BINDING_TABLE_SIZE
     value: '10'
   - condition: [device_series_1]
     name: NVM3_DEFAULT_NVM_SIZE

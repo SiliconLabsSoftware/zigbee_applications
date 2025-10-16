@@ -3,10 +3,11 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-268.45%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-15.69%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-269.1%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-15.71%20KB-blue)
+
 ## Description ##
 
 While there is a currently function manufacturing library plugin, the following code extends this library with more functionality and commands. Sending and receiving packets, PER test, manipulating tokens, configuring GPIO settings, and changing the power to deci dBm are among the added functionality of this code. This project was built and tested on the Wireless Starter Kit Main Board (BRD4001) and EFR32MG12 2.4 GHz 10 dBm Radio Board (BRD4162A) in Studio v5 with SDK 7.x. This tutorial assumes these are the boards being used. This code can be built on any EFR32 board but may require adjustments.
@@ -67,7 +68,7 @@ receive-mode modes:
 
 ## SDK version ##
 
-[SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+[SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 
 ## Software Required ##
 
@@ -280,7 +281,7 @@ In the receiver console, you will see printouts for each of the received packets
 plugin mfglib receivePER-stop //will print out the expected # of packets, received # of packets, and PER.
 ```
 
-To see more information, right click on the board and click “start capture” 
+To see more information, right click on the board and click “start capture”
 ![zigbee](image/NAcapture.png)
 
 ### How to configure CCA Threshold and CTUNE ###

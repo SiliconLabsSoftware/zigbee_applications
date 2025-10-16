@@ -3,7 +3,7 @@
  * @brief Custom manufacturing token header
  *******************************************************************************
  * # License
- * <b>Copyright 2020 Silicon Laboratories Inc. www.silabs.com</b>
+ * <b>Copyright 2025 Silicon Laboratories Inc. www.silabs.com</b>
  *******************************************************************************
  *
  * The licensor of this software is Silicon Laboratories Inc.  Your use of this
@@ -58,7 +58,7 @@
  *
  * To use this example:
  *   Ensure the Token Manager's configuration in Studio
- *   has enabled Custom Manufacuturing Tokens.
+ *   has enabled Custom Tokens.
  *
  *   Ensure your application has:
  *     #include "sl_token_api.h"

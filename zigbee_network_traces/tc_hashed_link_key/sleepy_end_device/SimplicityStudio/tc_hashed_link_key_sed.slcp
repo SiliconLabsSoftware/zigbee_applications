@@ -34,6 +34,7 @@ component:
 - id: zigbee_update_tc_link_key
 - id: zigbee_zcl_cli
 - id: zigbee_zcl_framework_core
+- id: zigbee_end_device_support
 
 config_file:
 - path: ../config/zcl/zcl_config.zap

@@ -97,7 +97,7 @@ void network_form_handler(sl_cli_command_arg_t *arguments)
 
   if (state != SL_ZIGBEE_JOINED_NETWORK) {
     status = sl_zigbee_af_network_creator_start(true);
-    sl_zigbee_app_debug_println("%p network %p: 0x%X",
+    sl_zigbee_app_debug_println("%s network %s: 0x%X",
                                 "Form",
                                 "start",
                                 status);

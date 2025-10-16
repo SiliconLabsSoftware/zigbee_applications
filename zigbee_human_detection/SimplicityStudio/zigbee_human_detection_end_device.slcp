@@ -184,7 +184,7 @@ sdk_extension:
 - id: third_party_hw_drivers
   version: 4.4.0
 - id: aiml
-  version: 2.1.0
+  version: 2.1.2
 
 ui_hints:
   highlight:

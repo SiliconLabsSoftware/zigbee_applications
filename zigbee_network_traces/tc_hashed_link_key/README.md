@@ -3,10 +3,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-224.32%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-14.9%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-254.46%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-15.96%20KB-blue)
 
 ## Summary ##
 
@@ -14,7 +14,7 @@ When you join network and the end-to-end communication with the trust center is 
 
 ## SDK version ##
 
-- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 
 ## Software Required ##
 

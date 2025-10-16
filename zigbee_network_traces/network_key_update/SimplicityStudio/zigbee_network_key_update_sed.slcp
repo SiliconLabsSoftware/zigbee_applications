@@ -32,6 +32,7 @@ component:
   - id: zigbee_trust_center_nwk_key_update_broadcast
   - id: zigbee_zcl_framework_core
   - id: zigbee_network_steering
+  - id: zigbee_end_device_support
 
 readme:
 - path: ../README.md
@@ -79,7 +80,7 @@ configuration:
     value: SLI_ZIGBEE_NETWORK_DEVICE_TYPE_SLEEPY_END_DEVICE
   - name: SLI_ZIGBEE_PRIMARY_NETWORK_SECURITY_TYPE
     value: SLI_ZIGBEE_NETWORK_SECURITY_TYPE_3_0
-  - name: EMBER_BINDING_TABLE_SIZE
+  - name: SL_ZIGBEE_BINDING_TABLE_SIZE
     value: '10'
   - condition: [device_series_1]
     name: NVM3_DEFAULT_NVM_SIZE

@@ -3,11 +3,12 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 [![Required board](https://img.shields.io/badge/Mikroe-PIR%20Click%20board-green)](https://www.mikroe.com/pir-click)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-263.07%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-19.43%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-263.49%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-17.8%20KB-blue)
+
 ## Overview ##
 
 This project aims to implement a Zigbee Smart Lighting application using a PIR sensor integrated with the Zigbee wireless stack. The PIR sensor on the PIR Click board reads a voltage when exposed to infrared radiation by ADC and converts it to a scaled value in millivolts (mV). By moving in front of the sensor, you can see how the measured voltage values change. Whenever certain motion of the human body is detected, the system will either turn on the light or the alarm. The setup will have at least 2 nodes, 1 for motion detection, 1 for light control. A Zigbee gateway may be involved.
@@ -18,7 +19,7 @@ In figure above, node 1 is the Zigbee Gateway. Node 2 is the motion sensor. Node
 
 ## SDK version ##
 
-- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 - [Third Party Hardware Drivers v4.4.0](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
 
 ## Software Required ##

@@ -44,6 +44,7 @@ component:
 - id: zigbee_security_link_keys
 - id: zigbee_core_cli
 - id: zigbee_zcl_cli
+
 config_file:
 - path: ../config/zcl/zcl_config.zap
   directory: zcl

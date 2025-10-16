@@ -3,12 +3,12 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 [![Required board](https://img.shields.io/badge/Sparkfun-MLX90640%20IR%20Array%20(MLX90640%20FIR%20sensor)-green)](https://www.sparkfun.com/products/14844)
 [![Required board](https://img.shields.io/badge/Sparkfun-Micro%20OLED%20Breakout%20(Qwiic)%20board-green)](https://www.sparkfun.com/products/14532)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-283.19%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-31.1%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-283.74%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-31.12%20KB-blue)
 
 ## Overview ##
 
@@ -20,9 +20,9 @@ The following picture shows the system view of how it works.
 
 ## SDK version ##
 
-- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 - [Third Party Hardware Drivers v4.4.0](https://github.com/SiliconLabs/third_party_hw_drivers_extension)
-- [AI/ML - Alpha - 2.1.0](https://github.com/SiliconLabsSoftware/aiml-extension)
+- [AI/ML - Alpha - 2.1.2](https://github.com/SiliconLabsSoftware/aiml-extension)
 
 ## Software Required ##
 

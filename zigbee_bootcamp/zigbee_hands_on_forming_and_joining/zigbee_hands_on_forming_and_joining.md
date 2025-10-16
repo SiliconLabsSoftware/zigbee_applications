@@ -7,19 +7,20 @@ These exercises help you get familiar with ZigBee 3.0 in the EmberZNet Stack, Si
 
 The boot camp series hands-on workshop will cover the four functionalities below, and the application development is split into four steps respectively to show how an application should be built up from scratch.
 The exercise in this documentation is the first exercise in the "Zigbee Boot Camp" series.
+
 - **[The 1st phase, forming a basic network (Light), and a joining process (Switch) will be done using install code.](Zigbee-Hands-on-Forming-Joining.md)**
 - [The 2nd phase, will prepare the devices to transmit, receive, and process the On-Off commands using APIs.](../Zigbee-Hands-on-Sending-OnOff-Commands/Zigbee-Hands-on-Sending-OnOff-Commands.md)
 - [The 3rd phase, the Switch will have a periodic event to execute custom code, in this case a blinking LED.](../Zigbee-Hands-on-Using-Event/Zigbee-Hands-on-Using-Event.md)
 - [The 4th phase, the Switch will be able to store any custom data in its flash using Non-volatile memory.](../Zigbee-Hands-on-Non-volatile-Data-Storage/Zigbee-Hands-on-Non-volatile-Data-Storage.md)
 
-
 ## 1.2. Purpose
 
-This tutorial will give an overall knowledge about how to build a Light and Switch device from scratch. By the end of this Lab, the user will be familiar with Simplicity Studio and  Zigbee fundamentals. 
+This tutorial will give an overall knowledge about how to build a Light and Switch device from scratch. By the end of this Lab, the user will be familiar with Simplicity Studio and  Zigbee fundamentals.
 The network will consist of two devices using the EFR32MG24 SoCs (BRD4187C).
+
 - One of the devices is the Light. The Light will act as a Coordinator and Trust Center of the network and create a centralized network. This device will form and open the network, permit other devices to join, and manage security keys.
 - The other device is the Switch. It joins the network opened by the Light and sends On-Off commands to the Light. This device will act as an End Device.
-The figure below illustrates the workflow of this hands-on. 
+The figure below illustrates the workflow of this hands-on.
 
 <div align="center">
   <img src="Images/Workflow.png">
@@ -38,13 +39,13 @@ The Silicon Labs Project Wizard will be used for creating the application. Silic
 
 1. Go to File > New > Silicon Labs Project Wizard. This will bring up the New Project Wizard. See the Figure 2-1 below.
 
-<div align="center">
-  <img src="Images/ProjectWizard.png">
-</div>
-<div align="center">
-  <b>Figure 2-1 New Project Wizard</b>
-</div>  
-</br>
+  <div align="center">
+    <img src="Images/ProjectWizard.png">
+  </div>
+  <div align="center">
+    <b>Figure 2-1 New Project Wizard</b>
+  </div>  
+  </br>
 
 2. Select your Target Board (BRD4187C), Target Device (EFR32MG24B220F1536IM48), and ensure that you have selected Simplicity SDK v2024.12.1 and GNU ARM v12.2.1 click Next. See Figure 2-2.
 
@@ -68,10 +69,9 @@ The Silicon Labs Project Wizard will be used for creating the application. Silic
 
 4. Name your project to "Zigbee_Light_ZC" and then Click Finish to create the project.
 
+## 2.1. Configure the "Zigbee_Light_ZC" project
 
-## 2.1. Configure the "Zigbee_Light_ZC" project.
-
-Once the project has been created Simplicity Studio should automatically open the Project Configurator (.slcp) which shows an overview of the project as depicted in Fig 2-4. In the overview you can see the Target and SDK Selection, Project Details and the Project Generators. 
+Once the project has been created Simplicity Studio should automatically open the Project Configurator (.slcp) which shows an overview of the project as depicted in Fig 2-4. In the overview you can see the Target and SDK Selection, Project Details and the Project Generators.
 
 <div align="center">
   <img src="Images/ProjectOverview.png">
@@ -81,7 +81,7 @@ Once the project has been created Simplicity Studio should automatically open th
 </div>  
 </br>
 
-### Zigbee Cluster Configurator.
+### Zigbee Cluster Configurator
 
 For this tutorial, you must define the device type which will provide the proper clusters and attributes for the Light application. It is important to set the ZCL (Zigbee Cluster Library) configuration for the Light Application as it assists in configuration of the cluster functionality incorporated. In order to change the ZCL configuration, you must open the ZCL Advanced Platform (ZAP) in the Configuration Tools tab of the .slcp. If an endpoint is not created, click on ADD NEW ENDPOINT. Once an endpoint has been added click on edit and select Device: “HA On/Off Light (0x0100)”. By selecting a device type, the endpoint is configured according to the Zigbee Specifications.
 
@@ -96,11 +96,12 @@ For this tutorial, you must define the device type which will provide the proper
 </br>
 
 Configure the Zigbee Light as a coordinator:
+
 - In the Project Configurator click on “Software Components”. This will show the components that can be installed/uninstalled in the project.
 - Go to Zigbee > Utility > Zigbee Device Config and click Configure.
 - Change the Primary Network Device Type to Coordinator or Router.
-- Install the Network Creator 
-- Install the Network Creator Security Component. 
+- Install the Network Creator
+- Install the Network Creator Security Component.
 - Install the Security Link Keys Component
 
 The components mentioned below must be installed or removed to get a device that can operate as a Coordinator. See Figure 2-6 on how to install components in Project Configurator. Please note that the components mentioned below are the minimal requirements to finish the Forming and Joining hands-on, however, it’s not enough for making the “Coordinator/Router” and “Router” device to pass the Z3 certification. For Z3 certification, please refer to the Z3LightSoc and Z3SwitchSoc examples for the necessary Components.
@@ -113,7 +114,7 @@ The components mentioned below must be installed or removed to get a device that
 </div>  
 </br>
 
-​ •The **Network Creator** and **Network Creator Security** components implement the network forming and opening functionality, therefore these are required to have for the Coordinator. Make sure to check the configuration such that it matches the security settings desired. 
+​ •The **Network Creator** and **Network Creator Security** components implement the network forming and opening functionality, therefore these are required to have for the Coordinator. Make sure to check the configuration such that it matches the security settings desired.
 
 ​ •The **Network Steering** and **Update TC Link Key** can be removed, since the device doesn't intend to join to any network.
 
@@ -121,9 +122,9 @@ The components mentioned below must be installed or removed to get a device that
 
 ​ •The **Security Link Keys** component under Zigbee > Stack provides management of APS link keys in the key table. It is used by a trust center (coordinator) to manage link keys of devices in the network, or by non-trust center devices wishing to manage partner link keys. Therefore, it is required to have.
 
-​ •The **CLI: Command Line Interface**, **CLI Core** components in **Services > CLI**. This interface lets the user communicate with the SoC. In case of selecting the correct board at project creation phase, the component settings should fit to the pinout of the device, but it is also important to double check the values. The WSTK comes with a built-in VCOM, and application can use it by connecting WSTK to PC via USB connector. This is the Virtual COM port, which must be enabled by installing the IO Stream: USART Component under Services > IO Stream. 
+​ •The **CLI: Command Line Interface**, **CLI Core** components in **Services > CLI**. This interface lets the user communicate with the SoC. In case of selecting the correct board at project creation phase, the component settings should fit to the pinout of the device, but it is also important to double check the values. The WSTK comes with a built-in VCOM, and application can use it by connecting WSTK to PC via USB connector. This is the Virtual COM port, which must be enabled by installing the IO Stream: USART Component under Services > IO Stream.
 
-**Note:** Ensure the Zigbee > Zigbee Core CLI is also installed in the project. This component should be preinstalled by the Zigbee Minimal Project Configuration. 
+**Note:** Ensure the Zigbee > Zigbee Core CLI is also installed in the project. This component should be preinstalled by the Zigbee Minimal Project Configuration.
 
 Table 2.1 depicts the affected components on the Light (Coordinator) node:
 
@@ -144,7 +145,7 @@ Press the Build button. Upon a successful build, the binary files should appear 
 Let's download the Zigbee_Light_ZC.s37 file to the development kit as shown below. See Figure 3-1 and Figure 3-2.
 The highlighted "Advanced Settings.." in Figure 3-3 allows the user to decide how to flash the chip. Here, the flash can be merged with a new image (Merge Content), partially (Page Erase) or completely (Full Erase) erase before downloading the file.
 Keep in mind that neither erase type cleans the bootloader section in EFR32MG24 part, but the Full erase deletes the token region.
-After the image has been downloaded, it's possible to communicate with the device. For this purpose, open the Launch console, which is a built-in serial port terminal in the Studio. 
+After the image has been downloaded, it's possible to communicate with the device. For this purpose, open the Launch console, which is a built-in serial port terminal in the Studio.
 
 **Note:** Please execute an "Erase" process before the following steps to avoid any unintended effect by the existing network settings in the device.
 
@@ -172,7 +173,6 @@ After the image has been downloaded, it's possible to communicate with the devic
 </div>  
 </br>
 
-
 If the serial console is opened, switch to "Serial 1" and press "Enter". See Figure 3-4.
 
 <div align="center">
@@ -185,8 +185,7 @@ If the serial console is opened, switch to "Serial 1" and press "Enter". See Fig
 
 The "\n\r" characters triggers the project name printing. This basic test shows that the RX and TX of the CLI is working correctly.
 If the same text is printed, put away the Light application and start creating the Switch.
-Note: If the project name does not appear in console you can add this in the Services > Command Line Interface > Security > CLI Global Configuration > New Command prompt option as depicted in Figure 3-5. 
-
+Note: If the project name does not appear in console you can add this in the Services > Command Line Interface > Security > CLI Global Configuration > New Command prompt option as depicted in Figure 3-5.
 
 <div align="center">
   <img src="Images/CLICMD.png">
@@ -200,17 +199,19 @@ Note: If the project name does not appear in console you can add this in the Ser
 
 In this hands-on, the Switch is the device that will join the network created and opened by the Light. However, the procedure to create and form the network is described in the [next module](../Zigbee-Hands-on-Sending-OnOff-Commands/Zigbee-Hands-on-Sending-OnOff-Commands.md).
 Creating the project and configuration is similar to the Light application. The Switch application is also based on the "ZigBeeMinimal" sample application, therefore:
-1.  Repeat the step 1-4 of [Create Light application](#2-create-light-application), except name the project to "Zigbee_Switch_ZED".
-2.  Open the .slcp file of the project.
- - Go to  Configuration Tools  tab, open the ZCL Advanced Platform (ZAP) and choose HA On/Off Light Switch(0x0103) device template. Install the clusters that have a yellow warning sign. The Enabled Clusters filter can be used to identify the required clusters easily. 
- - Go to the Pro Leaf Stack and click Install. Note it will ask if you want to replace the Pro Stack component with the Pro Leaf Stack. Click OK.
- - Go to Software Components tab and search for Zigbee Device Config select the End device type from the dropdown menu. 
-  - Go to Software Components tab and double check the below components are installed: 
-   - Debug Print
-   - CLI: Command Line Interface 
-   - CLI: CLI Core Components.
-   - Network Steering.
-   - Update TC Link Key.
+
+1. Repeat the step 1-4 of [Create Light application](#2-create-light-application), except name the project to "Zigbee_Switch_ZED".
+2. Open the .slcp file of the project.
+
+- Go to  Configuration Tools  tab, open the ZCL Advanced Platform (ZAP) and choose HA On/Off Light Switch(0x0103) device template. Install the clusters that have a yellow warning sign. The Enabled Clusters filter can be used to identify the required clusters easily.
+- Go to the Pro Leaf Stack and click Install. Note it will ask if you want to replace the Pro Stack component with the Pro Leaf Stack. Click OK.
+- Go to Software Components tab and search for Zigbee Device Config select the End device type from the dropdown menu.
+- Go to Software Components tab and double check the below components are installed:
+- Debug Print
+- CLI: Command Line Interface
+- CLI: CLI Core Components.
+- Network Steering.
+- Update TC Link Key.
 
 The major difference between the Light application and Switch application is the selection of the network related components. Let's have a closer look at the enabled components.
 
@@ -219,7 +220,6 @@ The major difference between the Light application and Switch application is the
 ​ •The **Network Steering** component serves to discover the existing networks on the enabled channels. The device issues a Beacon Request message and listens to the responses. If the Beacon response (from ZC or ZR) is received with "permit association" flag set, the device starts the joining process for the network, otherwise continue the scanning. Please see the Table 5.1 below for the recommended and required components.
 
 ​ •The **Update TC Link Key** is used to request new APS Link Key from the Trust Center. It should be installed since the Light (Trust Center) has the Security Link Keys Library.
-
 
 Summarized the above, the following table presents the affected plugins on the Switch (Router) node.
 
@@ -254,7 +254,7 @@ This chapter presents how to form and join a network. The communication between 
 ## 6.1 Programming the Install Code to Switch (Router) Device
 
 For programming the install code into the Switch device, you need to create a text file with the value of the install code, and then write the install code into the manufacturing area of the Switch node by using the Simplicity Commander.
-To save your time on this hands-on, we have prepared a batch file below that can finish the install code programming automatically. Create a batch file, as seen below, open it with any text editor, copy and paste the content below to it, save and execute it for programming the install code. Please ensure only the switch device is connected to the PC, before running the script. 
+To save your time on this hands-on, we have prepared a batch file below that can finish the install code programming automatically. Create a batch file, as seen below, open it with any text editor, copy and paste the content below to it, save and execute it for programming the install code. Please ensure only the switch device is connected to the PC, before running the script.
 
 ```
 @echo off
@@ -297,7 +297,7 @@ echo.
 pause
 ```
 
-Below is the result of executing the batch file: 
+Below is the result of executing the batch file:
 
 <div align="center">
   <img src="Images/InstallCode.png">
@@ -368,9 +368,10 @@ Note: The sections below (invisible by default, click the heading to view the de
   <summary> Show/Hide detail about how to program the install code (non-required) </summary>
   
 ### 6.1.1 Format of the Install Code File
+
 To program the install code, create a simple text file with the value of the install code (without the CRC). In these instructions the file is named ```install-code-file.txt.```
 The format of the file is as follows:
-```Install Code: <ascii-hex> ```
+```Install Code: <ascii-hex>```
 
 Here is a sample install code file. The CRC for that code is 0xB5C3 and is not included in the file.
 
@@ -381,12 +382,12 @@ Here is a sample install code file. The CRC for that code is 0xB5C3 and is not i
 To get started, it is best to verify there is connectivity with the device to be programmed, and what information is currently stored on the node.
 To do this, make sure that only the Switch device is connected to your PC (otherwise a new dialog will pop-up for selecting the right device), and then execute the following command to print all manufacturing token data from an EFR32-based device. The tokendump command prints manufacturing token data as key-value pairs. Simplicity Commander supports more than one group of tokens. In this example, the token group named "znet" is used.
 
-```$ C:\SiliconLabs\SimplicityStudio\v5\developer\adapter_packs\commander\commander.exe tokendump --tokengroup znet ```
+```$ C:\SiliconLabs\SimplicityStudio\v5\developer\adapter_packs\commander\commander.exe tokendump --tokengroup znet```
 
 You should see the following output if you didn't write the install code before, where the code in highlighted area below reflects the significant fields related to the install code:
 Note: If the commander command is not available on your PowerShell console, please check if you have installed the commander correctly, and make sure the commander.exe is included in the directory below.
 
-``` C:\SiliconLabs\SimplicityStudio\v5\developer\adapter_packs\commander```
+```C:\SiliconLabs\SimplicityStudio\v5\developer\adapter_packs\commander```
 
 <div align="center">
   <img src="Images/check_install_code.png">
@@ -417,8 +418,6 @@ After writing the install code, it is best to verify the information by executin
 </br>
 </details>
 
-
-
 ## 6.2 Form centralized network on Light (Coordinator) device
 
 ### 6.2.1 Derive a link key from the install code
@@ -434,7 +433,7 @@ option install-code 0 {00 0B 57 FF FE 64 8D D8} {83 FE D3 40 7A 93 97 23 A5 C6 3
 ```
 
 - The first argument is the link key table index.
-- The next argument is the EUI64 of the joining node (in this example, it's the Switch node). You can find this information by running the info command on the Switch node's CLI , and looking for the string 
+- The next argument is the EUI64 of the joining node (in this example, it's the Switch node). You can find this information by running the info command on the Switch node's CLI , and looking for the string
 similar to node [(>)000B57FFFE648DD8].
 
 <div align="center">
@@ -444,7 +443,6 @@ similar to node [(>)000B57FFFE648DD8].
   <b>Figure 6-4 Check Device EUI </b>
 </div>  
 </br>
-
 
 - The last argument is the install code with the 2-byte CRC appended at the end. You can calculate the CRC yourself, or you can simply find out from the output of the batch file execution which has the command `$ commander tokendump --tokengroup znet` inside:
 
@@ -474,9 +472,10 @@ As show above, the derived link key is:
 66 B6 90 09 81 E1 EE 3C  A4 20 6B 6B 86 1C 02 BB
 ```
 
-### 6.2.2 Form Centralized Network.
+### 6.2.2 Form Centralized Network
 
 On Light node, use the command below to form a centralized network with Zigbee 3.0 security.
+
 ```
 plugin network-creator start 1
 ```
@@ -508,7 +507,6 @@ For example:
 ```
 plugin network-creator-security open-with-key {00 0B 57 FF FE 64 8D D8} {66 B6 90 09 81 E1 EE 3C A4 20 6B 6B 86 1C 02 BB}
 ```
-
 
 ## 6.3 Join the network on Switch (Router) device
 
@@ -591,8 +589,7 @@ Add the network key 6E 41 58 D6 E1 18 07 49  97 58 93 4B BB 0C BC 76 and derived
   <b>Figure 6-11 Add Network Key </b>
 </div>  
 
-
-4.  Repeat the last step for adding the derived link key to the list.
+4. Repeat the last step for adding the derived link key to the list.
 
 Now the Switch should have joined the network created by the Light, please use the command on the Switch for leaving the network firstly.
 
@@ -623,7 +620,6 @@ It should change the view to Network Analyzer and immediately start capturing.
 And then repeat the step in **[Open the network with the derived link key](#623-open-the-network-with-the-derived-link-key)** to open the network, and step in **[Join the network on Switch (Router) device](#63-join-the-network-on-switch-router-device)** to join the network.
 The capture file (Live) should show the packets on the network.
 
-
 ### 6.4.3 Joining Process in Network Analyzer
 
 Stop the network analyzer after the Switch finish joining the network, and have a look at the Network Analyzer how the joining process works. See the figure below.
@@ -637,7 +633,6 @@ Stop the network analyzer after the Switch finish joining the network, and have 
 </br>
 
 **Note:** Probably a lot of "Many-to-One Route Discovery" appear in the log. The upper green filter box can be used to filter these messages out. Right click on this package and "Show only summary: Many…..", then negate the condition from "==" to "!=".
-
 
 ## Conclusion
 

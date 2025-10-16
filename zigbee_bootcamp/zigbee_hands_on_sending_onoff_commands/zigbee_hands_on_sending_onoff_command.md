@@ -1,6 +1,5 @@
 # 1. Introduction
 
-
 ## 1.1. Application features
 
 The Zigbee boot camp is divided into four phases to show how an application should be built from scratch.
@@ -10,8 +9,6 @@ This module is the 2nd phase of the series “Zigbee Boot Camp” course.
 - **[The 2nd phase, will prepare the devices to transmit, receive, and process the On-Off commands using APIs.](../Zigbee-Hands-on-Sending-OnOff-Commands/Zigbee-Hands-on-Sending-OnOff-Commands.md)**
 - [The 3rd phase, the Switch will have a periodic event to execute custom code, in this case a blinking LED.](../Zigbee-Hands-on-Using-Event/Zigbee-Hands-on-Using-Event.md)
 - [The 4th phase, the Switch will be able to store any custom data in its flash using Non-volatile memory.](../Zigbee-Hands-on-Non-volatile-Data-Storage/Zigbee-Hands-on-Non-volatile-Data-Storage.md)
-
-
 
 ## 1.2. Purposes
 

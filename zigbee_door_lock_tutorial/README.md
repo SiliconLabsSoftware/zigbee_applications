@@ -3,10 +3,10 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-239.34%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-15.12%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-259.47%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-16.11%20KB-blue)
 
 ## Overview ##
 
@@ -14,7 +14,7 @@ This lab demonstrates how to create a Door Lock & Door Controller application in
 
 ## SDK version ##
 
-- [Simplicity SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [Simplicity SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 
 ## Hardware Required ##
 

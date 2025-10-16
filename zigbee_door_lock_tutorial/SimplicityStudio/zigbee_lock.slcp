@@ -14,11 +14,11 @@ filter:
 package: Zigbee
 quality: production
 readme:
-- path: ../../README.md
+- path: ../README.md
 
 source:
-- path: ../../src/zigbee_lock/main.c
-- path: ../../src/zigbee_lock/app.c
+- path: ../src/zigbee_lock/main.c
+- path: ../src/zigbee_lock/app.c
 
 component:
 - id: sl_main
@@ -45,62 +45,64 @@ component:
 - id: zigbee_zcl_cli
 - id: zigbee_zcl_framework_core
 - id: zigbee_zll_identify_server
+- id: zigbee_end_device_support
+- id: token_manager
 config_file:
-  - path: ../../config/zcl/zigbee_lock/zcl_config.zap
+  - path: ../config/zcl/zigbee_lock/zcl_config.zap
     directory: "zcl" 
-  - path: ../../src/zigbee_lock/custom_token_header.h
+  - path: ../src/zigbee_lock/custom_token_header.h
 other_file:
-  - path: ../../images/extension_example_project.png
+  - path: ../images/extension_example_project.png
     directory: "images"
-  - path: ../../images/New_project.png
+  - path: ../images/New_project.png
     directory: "images"
-  - path: ../../images/create-network.png
+  - path: ../images/create-network.png
     directory: "images"
-  - path: ../../images/find-bind.png
+  - path: ../images/find-bind.png
     directory: "images"
-  - path: ../../images/send-lock.png
+  - path: ../images/send-lock.png
     directory: "images"
-  - path: ../../images/Lock_coordinator_1.png
+  - path: ../images/Lock_coordinator_1.png
     directory: "images"
-  - path: ../../images/Lock_coordinator_2.png
+  - path: ../images/Lock_coordinator_2.png
     directory: "images"
-  - path: ../../images/Lock_coordinator_3.png
+  - path: ../images/Lock_coordinator_3.png
     directory: "images"
-  - path: ../../images/Lock_coordinator_4.png
+  - path: ../images/Lock_coordinator_4.png
     directory: "images"
-  - path: ../../images/Lock_coordinator_5.png
+  - path: ../images/Lock_coordinator_5.png
     directory: "images"
-  - path: ../../images/Lock_controller_1.png
+  - path: ../images/Lock_controller_1.png
     directory: "images"
-  - path: ../../images/Lock_controller_2.png
+  - path: ../images/Lock_controller_2.png
     directory: "images"
-  - path: ../../images/Lock_controller_3.png
+  - path: ../images/Lock_controller_3.png
     directory: "images"
-  - path: ../../images/Lock_controller_4.png
+  - path: ../images/Lock_controller_4.png
     directory: "images"
-  - path: ../../images/Lock_controller_5.png
+  - path: ../images/Lock_controller_5.png
     directory: "images"
-  - path: ../../images/Lock_controller_6.png
+  - path: ../images/Lock_controller_6.png
     directory: "images"
-  - path: ../../images/Lock_device_1.png
+  - path: ../images/Lock_device_1.png
     directory: "images"
-  - path: ../../images/Lock_device_2.png
+  - path: ../images/Lock_device_2.png
     directory: "images"
-  - path: ../../images/Lock_device_3.png
+  - path: ../images/Lock_device_3.png
     directory: "images"
-  - path: ../../images/Lock_device_4.png
+  - path: ../images/Lock_device_4.png
     directory: "images"
-  - path: ../../images/Lock_device_5.png
+  - path: ../images/Lock_device_5.png
     directory: "images"
-  - path: ../../images/Lock_device_6.png
+  - path: ../images/Lock_device_6.png
     directory: "images"
-  - path: ../../images/Lock_device_7.png
+  - path: ../images/Lock_device_7.png
     directory: "images"
-  - path: ../../images/Lock_device_8.png
+  - path: ../images/Lock_device_8.png
     directory: "images"
-  - path: ../../images/Lock_device_9.png
+  - path: ../images/Lock_device_9.png
     directory: "images"
-  - path: ../../images/Lock_device_10.png
+  - path: ../images/Lock_device_10.png
     directory: "images"
 configuration:
 - name: SL_BOARD_ENABLE_VCOM 

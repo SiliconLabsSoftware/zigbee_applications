@@ -24,7 +24,6 @@ This training demonstrates the basic usage of Non-Volatile data storage on Ember
 - Using the token to store the last button press value over power cycle on our EFR32MG24 platform without EEPROM.
 - Retrieving the manufacturing string that the manufacturer has programmed during production.
 
-
 # 2. Using NVM in EmberZNet
 
 Non-Volatile Memory (NVM) or Non-Volatile Storage is memory that can retrieve stored information even when the device is power-cycled. Silicon Labs offers 3 different implementations for Non-Volatile data storage in flash memory and also offer Token mechanism for storing and retrieving data from the Non-Volatile Data Storage. These 3 different implementations for Non-Volatile data storage include

@@ -126,7 +126,7 @@ void event_network_form_handler(sl_cli_command_arg_t *arguments)
 
   if (state != SL_ZIGBEE_JOINED_NETWORK) {
     status = sl_zigbee_af_network_creator_start(true);
-    sl_zigbee_core_debug_println("%p network %p: 0x%X", "Form", "start",
+    sl_zigbee_core_debug_println("%s network %s: 0x%X", "Form", "start",
                                  status);
   } else {
     sl_zigbee_core_debug_println("Network already created");
@@ -166,7 +166,11 @@ void group_create_handler(sl_cli_command_arg_t *arguments)
     sl_zigbee_core_debug_println("Node Table is full, cannot add more nodes");
     return;
   }
-  for (uint8_t i = 0; i < current_index; i++)
+
+  uint8_t max_index = (current_index < NODE_TABLE_SIZE)
+                      ? current_index : NODE_TABLE_SIZE;
+
+  for (uint8_t i = 0; i < max_index; i++)
   {
     // Prepare the command
     sl_zigbee_af_fill_command_groups_cluster_add_group(GROUP_ID, group_name);

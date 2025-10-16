@@ -186,7 +186,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_co.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -201,7 +201,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_ro.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -216,7 +216,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/network_key_update/SimplicityStudio/zigbee_network_key_update_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/network_key_update/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd2601b brd2703a brd2710a brd4187c com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -255,13 +255,13 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
-  <descriptors name="zigbee_secured_joining_co" label='Zigbee - Secured Rejoining - Coordinator'
+  <descriptors name="zigbee_secured_rejoining_co" label='Zigbee - Secured Rejoining - Coordinator'
                description=' This project shows the Secured Rejoining in the case an End-device is aged out of the child table of its parent.'>
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/secured_rejoining/coordinator/SimplicityStudio/zigbee_secured_rejoining_co.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/secured_rejoining/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4186c brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd4186c brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -270,13 +270,13 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
-  <descriptors name="zigbee_secured_joining_ro" label='Zigbee - Secured Rejoining - Router'
+  <descriptors name="zigbee_secured_rejoining_ro" label='Zigbee - Secured Rejoining - Router'
                description=' This project shows the Secured Rejoining in the case an End-device is aged out of the child table of its parent.'>
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/secured_rejoining/router/SimplicityStudio/zigbee_secured_rejoining_ro.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/secured_rejoining/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4186c brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd4186c brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -285,13 +285,13 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
-  <descriptors name="zigbee_secured_joining_sed" label='Zigbee - Secured Rejoining - Sleepy End Device'
+  <descriptors name="zigbee_secured_rejoining_sed" label='Zigbee - Secured Rejoining - Sleepy End Device'
                description=' This project shows the Secured Rejoining in the case an End-device is aged out of the child table of its parent.'>
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/secured_rejoining/sleepy_end_device/SimplicityStudio/zigbee_secured_rejoining_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/secured_rejoining/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4182a brd4186c brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4182a brd4183a brd4186c brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -441,7 +441,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/app_link_key/coordinator/SimplicityStudio/app_link_key_coordinator.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/app_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd4183a brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -456,7 +456,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/app_link_key/router/SimplicityStudio/app_link_key_router.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/app_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd4183a brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -471,7 +471,7 @@
     <properties key="keywords" value="universal\ configurator"/>
     <properties key="projectFilePaths" value="zigbee_network_traces/app_link_key/sleepy_end_device/SimplicityStudio/app_link_key_sed.slcp"/>
     <properties key="readmeFiles" value="zigbee_network_traces/app_link_key/README.md"/>
-    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd2601b brd2703a com.silabs.board.none"/>
+    <properties key="boardCompatibility" value="brd4180a brd4181a brd4182a brd4183a brd2601b brd2703a com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
     <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
@@ -649,7 +649,7 @@
                description="This appliction is used to create a zigbee lock coordinator with the Silicon Labs EFR32xG21.">
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
-    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_coordinator/zigbee_lock_coordinator.slcp"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_coordinator.slcp"/>
     <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
     <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
@@ -664,7 +664,7 @@
                description="This appliction is used to create a zigbee lock controller with the Silicon Labs EFR32xG21.">
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
-    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_controller/zigbee_lock_controller.slcp"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock_controller.slcp"/>
     <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
     <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
@@ -679,7 +679,7 @@
                description="This appliction is used to create a zigbee lock device with the Silicon Labs EFR32xG21.">
     <properties key="namespace" value="template.uc"/>
     <properties key="keywords" value="universal\ configurator"/>
-    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock/zigbee_lock.slcp"/>
+    <properties key="projectFilePaths" value="zigbee_door_lock_tutorial/SimplicityStudio/zigbee_lock.slcp"/>
     <properties key="readmeFiles" value="zigbee_door_lock_tutorial/README.md"/>
     <properties key="boardCompatibility" value=" brd4180a brd4180b com.silabs.board.none"/>
     <properties key="partCompatibility" value=".*efr32[bm]g21.*  .*[bm]gm21.*"/>
@@ -687,6 +687,51 @@
     <properties key="toolchainCompatibility" value="gcc iar segger"/>
     <properties key="category" value="Zigbee Application"/>
     <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
+  <descriptors name="zigbee_bootcamp_light_co" label="Zigbee - Bootcamp Light Coordinator" 
+               description="This is a Zigbee minimal SoC network-layer application suitable as a starting point for new application development.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_bootcamp/zigbee_bootcamp_light_co/SimplicityStudio/zigbee_bootcamp_light_co.slcp"/>
+    <properties key="readmeFiles" value="zigbee_bootcamp/README.md"/>
+    <properties key="boardCompatibility" value=" brd4187c com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32mg24.*"/>
+    <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="Zigbee Application"/>
+    <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
+  <descriptors name="zigbee_bootcamp_switch_sed" label="Zigbee - Bootcamp Switch Sleepy End Device" 
+               description="This is a Zigbee minimal SoC network-layer application suitable as a starting point for new application development.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_bootcamp/zigbee_bootcamp_switch_sed/SimplicityStudio/zigbee_bootcamp_switch_sed.slcp"/>
+    <properties key="readmeFiles" value="zigbee_bootcamp/README.md"/>
+    <properties key="boardCompatibility" value=" brd4187c com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32mg24.*"/>
+    <properties key="ideCompatibility" value="generic-template iar-embedded-workbench makefile-ide simplicity-ide visual-studio-code"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="Zigbee Application"/>
+    <properties key="quality" value="production"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
+  <descriptors name="zigbee_soc_coordinator_tcso" label="ZigBee - SoC Coordinator TCSO"
+               description="This is an application project that demonstrates how ZigBee Trust Center Replace works via CLI commands">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_soc_coordinator_tcso/SimplicityStudio/zigbee_soc_coordinator_tcso.slcp"/>
+    <properties key="readmeFiles" value="zigbee_soc_coordinator_tcso/README.md"/>
+    <properties key="boardCompatibility" value="brd4180b brd4182a brd2703a brd4187c com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32mg21.* .*efr32mg22.* .*efr32mg24.*"/>
+    <properties key="ideCompatibility" value="makefile-ide simplicity-ide visual-studio-code generic-template"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="ZigBee Application"/>
+    <properties key="quality" value="EXPERIMENTAL"/>
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>

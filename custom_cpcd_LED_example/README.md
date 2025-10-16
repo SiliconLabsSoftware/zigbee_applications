@@ -3,10 +3,11 @@
 ![Type badge](https://img.shields.io/badge/Type-Virtual%20Application-green)
 ![Technology badge](https://img.shields.io/badge/Technology-Zigbee-green)
 ![License badge](https://img.shields.io/badge/License-Zlib-green)
-![SDK badge](https://img.shields.io/badge/SDK-v2025.6.0-green)
+![SDK badge](https://img.shields.io/badge/SDK-v2025.6.2-green)
 ![Build badge](https://img.shields.io/badge/Build-passing-green)
-![Flash badge](https://img.shields.io/badge/Flash-124.44%20KB-blue)
-![RAM badge](https://img.shields.io/badge/RAM-14.1%20KB-blue)
+![Flash badge](https://img.shields.io/badge/Flash-124.46%20KB-blue)
+![RAM badge](https://img.shields.io/badge/RAM-14.09%20KB-blue)
+
 ## Overview ##
 
 This example demonstrates how to create custom cpcd commands. The application allows the user to type either '1' or '0' from the primary (host) to turn on or off the LED on the secondary (RCP). Similarily, button 0 on the RCP will toggle the LED on the RCP. Pressing 'q' will terminate the application.
@@ -27,7 +28,7 @@ Both APIs will return a negative value in case of error, otherwise it will retur
 
 ## SDK version ##
 
-- [SiSDK v2025.6.0](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.0)
+- [SiSDK v2025.6.2](https://github.com/SiliconLabs/simplicity_sdk/releases/tag/v2025.6.2)
 
 ## Software Required ##
 

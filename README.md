@@ -32,6 +32,7 @@ This repository provides only SLCP projects (as External Repositories) that are 
 | 9  | Zigbee - Custom CPCd Command Project with LED Example | [Click here](./custom_cpcd_LED_example) |
 | 10  | Zigbee - Network Traces | [Click Here](./zigbee_network_traces) |
 | 11 | Zigbee - Door Lock Tutorial | [Click Here](./zigbee_door_lock_tutorial) |
+| 12 | ZigBee - SoC Coordinator TCSO | [Click Here](./zigbee_soc_coordinator_tcso) |
 
 ## Working with Projects ##
 

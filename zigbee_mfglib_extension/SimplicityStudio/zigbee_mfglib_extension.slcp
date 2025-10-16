@@ -24,6 +24,7 @@ component:
   - id: zigbee_manufacturing_library_cli
   - id: zigbee_pro_stack
   - id: zigbee_zcl_framework_core
+  - id: token_manager
 config_file:
   - path: ../config/zcl/zcl_config.zap
     directory: zcl
