@@ -33,6 +33,7 @@ This repository provides only SLCP projects (as External Repositories) that are 
 | 10  | Zigbee - Network Traces | [Click Here](./zigbee_network_traces) |
 | 11 | Zigbee - Door Lock Tutorial | [Click Here](./zigbee_door_lock_tutorial) |
 | 12 | ZigBee - SoC Coordinator TCSO | [Click Here](./zigbee_soc_coordinator_tcso) |
+| 13 | Zigbee - AC Clamp Meter Example | [Click Here](./zigbee_AC_clamp_meter) |
 
 ## Working with Projects ##
 

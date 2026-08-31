@@ -735,4 +735,19 @@
     <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
     <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
   </descriptors>
+  <descriptors name="zigbee_AC_clamp_meter" label="ZigBee - AC Clamp Meter Example"
+               description="This example shows how to use AC Current click sensor (MIKROE) with the EFR32xG24 Dev Kit Board and implement it in your Zigbee project with Simplciity Studio. This application demonstrates how to measure AC parameters such current, power, consumption using the AC Current click sensor connected to the EFR32xG24 Dev Kit Board. The measured and calculated values are then reported to a connected Zigbee Coordinator device.">
+    <properties key="namespace" value="template.uc"/>
+    <properties key="keywords" value="universal\ configurator"/>
+    <properties key="projectFilePaths" value="zigbee_AC_clamp_meter/SimplicityStudio/zigbee_AC_clamp_meter.slcp"/>
+    <properties key="readmeFiles" value="zigbee_AC_clamp_meter/README.md"/>
+    <properties key="boardCompatibility" value="brd2703a com.silabs.board.none"/>
+    <properties key="partCompatibility" value=".*efr32mg24.*"/>
+    <properties key="ideCompatibility" value="makefile-ide simplicity-ide visual-studio-code generic-template"/>
+    <properties key="toolchainCompatibility" value="gcc iar segger"/>
+    <properties key="category" value="ZigBee Application"/>
+    <properties key="quality" value="EXPERIMENTAL"/>
+    <properties key="filters" value="Device\ Type|SoC Project\ Difficulty|Advanced Wireless\ Technology|Zigbee"/>
+    <properties key="stockConfigCompatibility" value="com.silabs.ss.framework.project.toolchain.core.default"/>
+  </descriptors>
 </model:MDescriptors>
